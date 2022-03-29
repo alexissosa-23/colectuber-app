@@ -5,81 +5,64 @@ import * as Location from 'expo-location';
 //import { Button } from 'react-native-web';
 import Api from './api';
 
+const colectivoId = 3;
+
 export default function App() {
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
-/*
- function getUsers(){
-    Api.get("users")
-      .then((res)=>{
-        console.log(res);
-      }).catch((err)=>{
-        console.log(err);
-      });
- }
-*/
+  const [activo, setAtivo] = useState(false)
 
-function postUbicacion(){
-  if(!location){
-   console.log("La ubicacion esta vacia")
-   return null
-  }
-  //let possion = JSON.stringify(location);
- let datos = { colectivoId:3,
-      posicionColectivo:{
-      latitud:location.coords.latitude,
-      longitud:location.coords.longitude
-    }
-  }
-    console.log(datos)
-   // return
-
-  Api.post("colectuber/ubicacion",datos)
-  .then((res)=>{
-    console.log(res);
-  }).catch((err)=>{
-    console.log(err);
-  });
-
-}
- function ubicacion(){
-  (async () => {
+  async function postUbicacion() {
     if (Platform.OS === 'android' && !Constants.isDevice) {
-      setErrorMsg(
-        'Oops, this will not work on Snack in an Android emulator. Try it on your device!'
-      );
-      return;
+
+      throw 'Oops, this will not work on Snack in an Android emulator. Try it on your device!'
     }
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
-      setErrorMsg('Permission to access location was denied');
-      return;
+      throw 'Permission to access location was denied'
     }
 
     let location = await Location.getCurrentPositionAsync({});
-    setLocation(location);
-  })();
+    console.log(location)
+    let datos = {
+      colectivoId: colectivoId,
+      posicionColectivo: {
+        latitud: location.coords.latitude,
+        longitud: location.coords.longitude
+      }
+    }
 
-}
-  let ubi = 'Click on the button to see their location';
-  if (errorMsg) {
-    ubi = errorMsg;
-  } else if (location) {
-    ubi = JSON.stringify(location);
+    let res = await Api.post("colectuber/ubicacion", datos)
   }
+
+  useEffect(() => {
+    if (activo) {
+      const interval = setInterval(() => {
+        postUbicacion();
+      }, 2500);
+      return () => {
+        clearInterval(interval)
+      }
+    }
+  }, [activo])
+
+
   return (
     <View style={styles.container}>
       <Button
-       onPress={ubicacion}
-        backgroundColor= '#0000fff'
-        title='Ubicacion'
+        onPress={() => {
+          setAtivo(true)
+        }}
+        backgroundColor='#0000fff'
+        title='Activar Ubicacion'
       />
-      <Text>{ubi}</Text>
+      <br></br>
       <Button
-       onPress={postUbicacion}
-        backgroundColor= '#0000fff'
-        title='post_Api'
+        onPress={() => {
+          setAtivo(false)
+        }}
+        backgroundColor='#0000fff'
+        title='Desactivar Ubicacion'
       />
+
     </View>
   );
 }
