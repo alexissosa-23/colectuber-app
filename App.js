@@ -6,7 +6,7 @@ import * as Location from 'expo-location';
 import Api from './api';
 
 const colectivoId = 3;
-
+let mensaje = "Activar Ubicacion"
 export default function App() {
   const [activo, setAtivo] = useState(false)
 
@@ -43,25 +43,29 @@ export default function App() {
       }
     }
   }, [activo])
+  function ubicacionActDes() {
+    if (!activo) {
+      setAtivo(!activo);
+      mensaje = "Desactivar Ubicacion"
+    } else {
+      setAtivo(!activo);
+      mensaje = "Activar Ubicacion"
+    }
 
+
+
+  }
 
   return (
     <View style={styles.container}>
       <Button
         onPress={() => {
-          setAtivo(true)
+          ubicacionActDes()
         }}
         backgroundColor='#0000fff'
-        title='Activar Ubicacion'
+        title={mensaje}
       />
-      <br></br>
-      <Button
-        onPress={() => {
-          setAtivo(false)
-        }}
-        backgroundColor='#0000fff'
-        title='Desactivar Ubicacion'
-      />
+
 
     </View>
   );
