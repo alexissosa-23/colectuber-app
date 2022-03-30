@@ -4,6 +4,7 @@ import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 //import { Button } from 'react-native-web';
 import Api from './api';
+import swal from 'sweetalert';
 
 const colectivoId = 3;
 let mensaje = "Activar Ubicacion"
@@ -45,11 +46,39 @@ export default function App() {
   }, [activo])
   function ubicacionActDes() {
     if (!activo) {
-      setAtivo(!activo);
-      mensaje = "Desactivar Ubicacion"
+      swal({
+        title: "Activar Ubicacion",
+        text : "Estas seguro que deseas activar tu Ubicacion",
+        icon: "warning",
+        buttons: ["NO", "SI"]
+      }).then(respuesta=>{
+        if(respuesta){
+          mensaje= "Desactivar Ubicacion"
+          setAtivo(!activo)
+          swal({
+            text:"Ubicacion Activada",
+            icon:"success"
+          })
+
+        }
+      })
+
     } else {
-      setAtivo(!activo);
-      mensaje = "Activar Ubicacion"
+      swal({
+        title: "Desactivar Ubicacion",
+        text : "Estas seguro que deseas desactivar tu Ubicacion",
+        icon: "warning",
+        buttons: ["NO", "SI"]
+      }).then(respuesta=>{
+        if(respuesta){
+          mensaje= "Activar Ubicacion"
+          setAtivo(!activo)
+          swal({
+            text:"Ubicacion Desactivada",
+            icon:"success"
+          })
+        }
+      })
     }
 
 
