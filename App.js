@@ -1,112 +1,69 @@
-import React, { useState, useEffect } from 'react';
-import { Platform, Text, View, StyleSheet, Button } from 'react-native';
-import Constants from 'expo-constants';
-import * as Location from 'expo-location';
-//import { Button } from 'react-native-web';
-import Api from './api';
-import swal from 'sweetalert';
+import React, { Component } from 'react';
+import {TextInput,Button, Text, View, KeyboardAvoidingView, StyleSheet } from 'react-native';
+import DbaseComponent from './DbaseComponent'
+// You can import from local files
+// or any pure javascript modules available in npm
 
-const colectivoId = 3;
-let mensaje = "Activar Ubicacion"
-export default function App() {
-  const [activo, setAtivo] = useState(false)
-
-  async function postUbicacion() {
-    if (Platform.OS === 'android' && !Constants.isDevice) {
-
-      throw 'Oops, this will not work on Snack in an Android emulator. Try it on your device!'
+export default class App extends Component {
+  constructor(){
+    super()
+    this.state={
+      name:'',
+      pass:''
     }
-    let { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== 'granted') {
-      throw 'Permission to access location was denied'
-    }
-
-    let location = await Location.getCurrentPositionAsync({});
-    console.log(location)
-    let datos = {
-      colectivoId: colectivoId,
-      posicionColectivo: {
-        latitud: location.coords.latitude,
-        longitud: location.coords.longitude
-      }
-    }
-
-    let res = await Api.post("colectuber/ubicacion", datos)
   }
-
-  useEffect(() => {
-    if (activo) {
-      const interval = setInterval(() => {
-        postUbicacion();
-      }, 2500);
-      return () => {
-        clearInterval(interval)
-      }
+  
+  clickme(){
+    if((this.state.name == 'admin') && (this.state.pass == 'admin')){
+      alert('Login')
     }
-  }, [activo])
-  function ubicacionActDes() {
-    if (!activo) {
-      swal({
-        title: "Activar Ubicacion",
-        text : "Estas seguro que deseas activar tu Ubicacion",
-        icon: "warning",
-        buttons: ["NO", "SI"]
-      }).then(respuesta=>{
-        if(respuesta){
-          mensaje= "Desactivar Ubicacion"
-          setAtivo(!activo)
-          swal({
-            text:"Ubicacion Activada",
-            icon:"success"
-          })
-
-        }
-      })
-
-    } else {
-      swal({
-        title: "Desactivar Ubicacion",
-        text : "Estas seguro que deseas desactivar tu Ubicacion",
-        icon: "warning",
-        buttons: ["NO", "SI"]
-      }).then(respuesta=>{
-        if(respuesta){
-          mensaje= "Activar Ubicacion"
-          setAtivo(!activo)
-          swal({
-            text:"Ubicacion Desactivada",
-            icon:"success"
-          })
-        }
-      })
-    }
-
-
-
+    //alert(this.state.name+""+this.state.pass)
   }
-
-  return (
-    <View style={styles.container}>
-      <Button
-        onPress={() => {
-          ubicacionActDes()
-        }}
-        backgroundColor='#0000fff'
-        title={mensaje}
-      />
-
-
-    </View>
-  );
+  
+  
+  render() {
+    return (
+      <View style={styles.container}>
+        <KeyboardAvoidingView behavior='padding'>
+        <DbaseComponent/>
+        
+        <View>
+            <TextInput
+                  style={{height:50,width:150}}
+                  value={this.state.name}
+                  placeholder={'User'}
+                  onChangeText={(name)=>this.setState({name})}
+                  />
+        </View>
+        <View>
+            <TextInput
+                  style={{height:50,width:150}}
+                  value={this.state.pass}
+                  placeholder={'Password'}
+                  secureTextEntry={true}
+                  onChangeText={(pass)=>this.setState({pass})}
+                  />
+        </View>
+        <View>
+          <Button
+              color="#841584"
+              title={'Login'}
+              onPress={()=>this.clickme()}
+          />
+      
+      </View>
+      
+        </KeyboardAvoidingView>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
-    backgroundColor: '#fff',
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '20',
+    backgroundColor: '#ecf0f1',
   },
 });
-

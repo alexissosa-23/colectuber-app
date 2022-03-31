@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "colectuber-app",
-    "slug": "colectuber-app",
+    "name": "login-basico",
+    "slug": "snack-595a3aa5-9cc1-4a05-b504-e7c955d584b6",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,16 +17,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "config": {
-        "googleMobileAdsAppId": "ca-app-pub-xxxxxx"
-      }
+      "supportsTablet": true
     },
     "android": {
-      "package": "com.alexissosa98.colectuberapp"
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "\nModelo de login básico"
   }
 }
