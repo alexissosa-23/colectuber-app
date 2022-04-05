@@ -17,7 +17,8 @@ export default class DbaseComponent extends Component{
       <View>
       <KeyboardAvoidingView behavior='padding'>
       
-      <Text>Colectuber Login</Text>
+      <Text>Colectuber</Text>
+      
       </KeyboardAvoidingView>
       </View>
       );

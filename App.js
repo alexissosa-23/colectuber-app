@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {TextInput,Button, Text, View, KeyboardAvoidingView, StyleSheet } from 'react-native';
 import DbaseComponent from './DbaseComponent'
+import Register from './Register'
 // You can import from local files
 // or any pure javascript modules available in npm
 
@@ -23,10 +24,12 @@ export default class App extends Component {
   
   render() {
     return (
+      
       <View style={styles.container}>
         <KeyboardAvoidingView behavior='padding'>
         <DbaseComponent/>
-        
+        <Register/>
+        <Text>Inicio Sesion</Text>
         <View>
             <TextInput
                   style={{height:50,width:150}}
@@ -38,6 +41,7 @@ export default class App extends Component {
         <View>
             <TextInput
                   style={{height:50,width:150}}
+                  
                   value={this.state.pass}
                   placeholder={'Password'}
                   secureTextEntry={true}
@@ -46,8 +50,8 @@ export default class App extends Component {
         </View>
         <View>
           <Button
-              color="#841584"
-              title={'Login'}
+              color='rgb(255, 127, 39)'
+              title={'Iniciar Sesion'}
               onPress={()=>this.clickme()}
           />
       
