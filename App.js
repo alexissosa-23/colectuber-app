@@ -1,38 +1,46 @@
 import React, { useState, useEffect } from 'react';
-import { Platform, Text, View, StyleSheet, Button } from 'react-native';
-import Constants from 'expo-constants';
+import { StatusBar } from 'expo-status-bar';
+import { Platform, StyleSheet, Text, View, Button, Alert } from 'react-native';
 import * as Location from 'expo-location';
-//import { Button } from 'react-native-web';
 import Api from './api';
-import swal from 'sweetalert';
 
 const colectivoId = 3;
 let mensaje = "Activar Ubicacion"
+let text = 'Waiting..';
 export default function App() {
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
   const [activo, setAtivo] = useState(false)
+  function postUbicacion(){
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+       // return;
+      }
 
-  async function postUbicacion() {
-    if (Platform.OS === 'android' && !Constants.isDevice) {
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+      text = JSON.stringify(location);
+      if (errorMsg) {
+        text = errorMsg;
+      } else if (location) {
+        text = JSON.stringify(location);
+      }
 
-      throw 'Oops, this will not work on Snack in an Android emulator. Try it on your device!'
-    }
-    let { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== 'granted') {
-      throw 'Permission to access location was denied'
-    }
-
-    let location = await Location.getCurrentPositionAsync({});
-    console.log(location)
-    let datos = {
+      let datos = {
       colectivoId: colectivoId,
       posicionColectivo: {
         latitud: location.coords.latitude,
         longitud: location.coords.longitude
       }
     }
+    console.log(datos)
 
     let res = await Api.post("colectuber/ubicacion", datos)
-  }
+
+    })();
+  };
 
   useEffect(() => {
     if (activo) {
@@ -44,69 +52,73 @@ export default function App() {
       }
     }
   }, [activo])
+
   function ubicacionActDes() {
-    if (!activo) {
-      swal({
-        title: "Activar Ubicacion",
-        text : "Estas seguro que deseas activar tu Ubicacion",
-        icon: "warning",
-        buttons: ["NO", "SI"]
-      }).then(respuesta=>{
-        if(respuesta){
-          mensaje= "Desactivar Ubicacion"
-          setAtivo(!activo)
-          swal({
-            text:"Ubicacion Activada",
-            icon:"success"
-          })
+    if(!activo){
+      Alert.alert(
+        'ColectuberApp',
+        'Desea activar su Ubicacion',
+        [
+          {
+            text: 'No',
+            onPress: () => Alert.alert('No Pressed'),
+            style: 'No',
+          },
+          {
+            text: 'Si',
+            onPress: () => {
+              mensaje = "Desactivar Ubicacion"
+              setAtivo(!activo)
+            },
+          },
+        ],
 
-        }
-      })
+      )
+    }else{
+      Alert.alert(
+        'ColectuberApp',
+        'Desea desactivar su Ubicacion',
+        [
+          {
+            text: 'No',
+            onPress: () => Alert.alert('No Pressed'),
+            style: 'No',
+          },
+          {
+            text: 'Si',
+            onPress: () => {
+              mensaje = "Activar Ubicacion"
+              setAtivo(!activo)
+            },
+          },
+        ],
 
-    } else {
-      swal({
-        title: "Desactivar Ubicacion",
-        text : "Estas seguro que deseas desactivar tu Ubicacion",
-        icon: "warning",
-        buttons: ["NO", "SI"]
-      }).then(respuesta=>{
-        if(respuesta){
-          mensaje= "Activar Ubicacion"
-          setAtivo(!activo)
-          swal({
-            text:"Ubicacion Desactivada",
-            icon:"success"
-          })
-        }
-      })
+      )
     }
-
-
 
   }
 
   return (
     <View style={styles.container}>
+      <Text>ColectuberApp!</Text>
+      <StatusBar style="auto" />
       <Button
-        onPress={() => {
+         onPress={() => {
           ubicacionActDes()
         }}
         backgroundColor='#0000fff'
         title={mensaje}
       />
-
-
+      <Text>{text}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '20',
   },
 });
-
