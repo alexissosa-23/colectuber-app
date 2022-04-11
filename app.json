@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.josesosa96.snack595a3aa59cc14a05b504e7c955d584b6"
     },
     "web": {
       "favicon": "./assets/favicon.png"

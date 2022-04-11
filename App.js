@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import {TextInput,Button, Text, View, KeyboardAvoidingView, StyleSheet } from 'react-native';
-import DbaseComponent from './DbaseComponent'
-import Register from './Register'
-// You can import from local files
-// or any pure javascript modules available in npm
 
 export default class App extends Component {
   constructor(){
@@ -27,14 +23,16 @@ export default class App extends Component {
       
       <View style={styles.container}>
         <KeyboardAvoidingView behavior='padding'>
-        <DbaseComponent/>
-        <Register/>
-        <Text>Inicio Sesion</Text>
+        
+        
+        <Text>Colectuber</Text>
+        <Text>Imagen colectivo</Text>
+        
         <View>
             <TextInput
                   style={{height:50,width:150}}
                   value={this.state.name}
-                  placeholder={'User'}
+                  placeholder={'User '}
                   onChangeText={(name)=>this.setState({name})}
                   />
         </View>
