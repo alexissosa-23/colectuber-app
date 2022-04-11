@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {TextInput,Button, Text, View, KeyboardAvoidingView, StyleSheet } from 'react-native';
+import  AssetExample  from './components/AssetExample.js';
+import  LogoInicioSesion  from './components/LogoInicioSesion.js';
 
 export default class App extends Component {
   constructor(){
@@ -23,11 +25,7 @@ export default class App extends Component {
       
       <View style={styles.container}>
         <KeyboardAvoidingView behavior='padding'>
-        
-        
-        <Text>Colectuber</Text>
-        <Text>Imagen colectivo</Text>
-        
+        <LogoInicioSesion/>
         <View>
             <TextInput
                   style={{height:50,width:150}}
@@ -66,6 +64,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
+    backgroundColor: '#ffffff',
   },
 });
