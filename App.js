@@ -28,6 +28,7 @@ TaskManager.defineTask(TASK_NAME, async ({ data, error }) => {
       chofer_id: choferId
     }
     console.log("Post desde el segundo plano ",datos)
+    let postt = await Api.post("colectuber/ubicacion", datos)
 
   }
 });
