@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {View, StyleSheet, Image } from 'react-native';
-
+//Borde
 export default class BordeSuperior extends Component {
   render() {
     return (

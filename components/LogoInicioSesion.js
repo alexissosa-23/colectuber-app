@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {View, StyleSheet, Image } from 'react-native';
-
+//Logo
 export default class LogoInicioSesion extends Component {
   render() {
     return (

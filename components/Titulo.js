@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {View, StyleSheet, Image } from 'react-native';
-
+//Titulo
 export default class Titulo extends Component {
   render() {
     return (

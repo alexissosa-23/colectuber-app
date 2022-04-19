@@ -3,7 +3,7 @@ import { Button, TextInput, View, KeyboardAvoidingView, StyleSheet } from 'react
 import BordeSuperior from './BordeSuperior.js';
 import LogoInicioSesion from './LogoInicioSesion.js';
 import Titulo from './Titulo.js';
-
+//Login
 export default class Login extends Component {
   constructor() {
     super()
@@ -21,8 +21,6 @@ export default class Login extends Component {
       alert('Usuario o Contraseña incorrectos!!!...')
     }
   }
-
-
   render() {
     return (
 
@@ -48,8 +46,6 @@ export default class Login extends Component {
               onChangeText={(pass) => this.setState({ pass })}
             />
           </View>
-
-
         </KeyboardAvoidingView>
 
         <View style={styles.container2}>
