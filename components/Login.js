@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Button, TextInput, View, KeyboardAvoidingView, StyleSheet } from 'react-native';
+import Api from '../api.js';
 import BordeSuperior from './BordeSuperior.js';
 import LogoInicioSesion from './LogoInicioSesion.js';
 import Titulo from './Titulo.js';
+
 //Login
 export default class Login extends Component {
+  
   constructor() {
     super()
     this.state = {
@@ -12,8 +15,16 @@ export default class Login extends Component {
       pass: ''
     }
   }
+ 
 
    clickme() {
+    let datos = {
+      userName: '',
+      password: ''
+     }
+     let res = await Api.post("authenticate", datos)
+     console.log(res)
+   
     if ((this.state.name == 'admin') && (this.state.pass == 'admin')) {
       alert('Se ha iniciado sesion correctamente!!!...')
     }
@@ -49,15 +60,18 @@ export default class Login extends Component {
         </KeyboardAvoidingView>
 
         <View style={styles.container2}>
-          <Button
+        <Button
+            style={{ height: 45, width: 200, marginTop: 60}}
             backgroundColor='rgb(255, 127, 39)'
             color='rgb(255, 127, 39)'
             borderColor='rgb(255, 127, 39)'
             borderBottomColor='rgb(0, 127, 39)'
             onPress={() => this.clickme()}
             title='INICIAR SESION'
+    
           />
         </View>
+
 
       </View>
 
