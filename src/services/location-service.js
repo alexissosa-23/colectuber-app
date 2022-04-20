@@ -15,10 +15,6 @@ TaskManager.defineTask(TASK_NAME, async ({ data, error }) => {
         if (location) {
             // Do something with location...
             console.log(location);
-            AuthService.test()
-                .then((res)=>{
-                    console.log(res);
-                });
         }
     }
 });
