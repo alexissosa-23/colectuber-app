@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button,Alert } from 'react-native';
 import LocationService from 'src/services/location-service';
 
 const ActivationButton = () => {
@@ -51,18 +51,58 @@ const ActivationButton = () => {
             .finally(()=>setReady(true))
     }
 
+    const alerts =()=> {
+        if (!active) {
+          Alert.alert(
+            'ColectuberApp',
+            'Desea activar su Ubicacion',
+            [
+              {
+                text: 'No',
+                onPress: () => Alert.alert('No Pressed'),
+                style: 'No',
+              },
+              {
+                text: 'Si',
+                onPress: () => {
+                    activate()
+                },
+              },
+            ],
+
+          )
+        } else {
+          Alert.alert(
+            'ColectuberApp',
+            'Desea desactivar su Ubicacion',
+            [
+              {
+                text: 'No',
+                onPress: () => Alert.alert('No Pressed'),
+                style: 'No',
+              },
+              {
+                text: 'Si',
+                onPress: () => {
+                    deactivate()
+                },
+              },
+            ],
+          )
+        }
+      }
     const render = ()=>{
         const renderButton = ()=>{
             if(!active){
-                return <Button 
-                    title='Activate' 
-                    onPress={activate}
+                return <Button
+                    title='Activate Location'
+                    onPress={alerts}
                     disabled={!(hasPermissions && ready)}
                 />
             }else{
-                return <Button 
-                    title='Deactivate' 
-                    onPress={deactivate}
+                return <Button
+                    title='Deactivate Location'
+                    onPress={alerts}
                     disabled={!ready}
                 />
             }
