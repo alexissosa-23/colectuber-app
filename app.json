@@ -31,11 +31,12 @@
         "backgroundColor": "#FFFFFF"
       },
       "permissions": [
-	      "ACCESS_BACKGROUND_LOCATION"
-	    ]
+        "ACCESS_BACKGROUND_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }
