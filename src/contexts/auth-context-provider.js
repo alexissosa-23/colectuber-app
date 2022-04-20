@@ -12,18 +12,19 @@ export const AuthProvider = ({children})=>{
     const [loading, setLoading] = useState(true);
     
     useEffect(()=>{
-        //Conseguir token del storage si existe
-        setLoading(false);
+        AuthService.isLoggedIn()
+            .then((res)=>setLoggedIn(res))
+            .catch(err=>console.error(err))
+            .finally(()=>setLoading(false));
     },[]);
 
     const login = async (userName, password)=>{
-        let token = await AuthService.authenticate(userName, password);
-        await AuthService.saveToken(token);
+        await AuthService.login(userName, password);
         setLoggedIn(true);
     }
 
-    const logout = async()=>{
-        await AuthService.removeToken();
+    const logout = async ()=>{
+        await AuthService.logout();
         setLoggedIn(false);
     }
 
