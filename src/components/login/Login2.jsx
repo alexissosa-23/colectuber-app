@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Button, TextInput, View, KeyboardAvoidingView, StyleSheet } from 'react-native';
-import Api from '../api.js';
-import BordeSuperior from './BordeSuperior.js';
-import LogoInicioSesion from './LogoInicioSesion.js';
-import Titulo from './Titulo.js';
-
+import BordeSuperior from './BordeSuperior.jsx';
+import LogoInicioSesion from './LogoInicioSesion.jsx';
+import Titulo from './Titulo.jsx';
 //Login
 export default class Login extends Component {
   
@@ -18,12 +16,6 @@ export default class Login extends Component {
  
 
    clickme() {
-    let datos = {
-      userName: '',
-      password: ''
-     }
-     let res = await Api.post("authenticate", datos)
-     console.log(res)
    
     if ((this.state.name == 'admin') && (this.state.pass == 'admin')) {
       alert('Se ha iniciado sesion correctamente!!!...')

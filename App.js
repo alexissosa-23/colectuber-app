@@ -5,7 +5,7 @@ import Home from 'src/components/home/home';
 import Login from 'src/components/login/login';
 import Loading from 'src/components/loading/loading';
 import { AuthProvider, useAuthContext } from 'src/contexts/auth-context-provider';
-//Prueba
+
 export default function App() {
   return (
     <AuthProvider>

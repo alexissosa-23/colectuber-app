@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {View, StyleSheet, Image } from 'react-native';
-//Borde
-export default class BordeSuperior extends Component {
+//Logo
+export default class LogoInicioSesion extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.logo} source={require("../assets/bordesuperior.png")}/>
+        <Image style={styles.logo} source={require("src/components/login/icons//logocolectivo.png")}/>
       </View>
     );
   }
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     backgroundColor: "#ffffff",
-    height: 70,
-    width: 320,
+    height: 158,
+    width: 200,
   }
 });

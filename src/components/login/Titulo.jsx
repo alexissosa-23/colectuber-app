@@ -5,7 +5,7 @@ export default class Titulo extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.logo} source={require("../assets/titulo.png")}/>
+        <Image style={styles.logo} source={require("src/components/login/icons/titulo.png")}/>
       </View>
     );
   }
