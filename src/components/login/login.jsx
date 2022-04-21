@@ -19,11 +19,12 @@ const Login = () => {
             return
         }
         setReady(false)
-
         authContext.login(name, pass)
-            .catch(err=> console.error(err))
-            .finally(()=>setReady(true))
-            
+            .catch(err=>{
+                console.error(err);
+                //Contrasena o username equivocado o error al autenticar
+                setReady(true);
+            })
     }
 
     return (

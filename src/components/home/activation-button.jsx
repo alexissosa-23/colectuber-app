@@ -25,7 +25,8 @@ const ActivationButton = () => {
             setLoading(false);
         }
 
-        init();
+        init()
+            .catch(err=>console.error(err));
     }, []);
 
     const handleError = (error) => {
