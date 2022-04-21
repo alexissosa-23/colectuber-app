@@ -1,5 +1,6 @@
 import React,{ useState, useEffect, useContext } from 'react';
 import AuthService from 'src/services/auth-service';
+import ColectuberService from 'src/services/colectuber-service';
 
 const AuthContext = React.createContext();
 
@@ -10,20 +11,37 @@ export const useAuthContext = ()=>{
 export const AuthProvider = ({children})=>{
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [loading, setLoading] = useState(true);
-    
+    const [viaje, setViaje] = useState(null);
+
     useEffect(()=>{
-        //Conseguir token del storage si existe
-        setLoading(false);
+        //Check if logged in
+        AuthService.checkLogin(fetchViaje)
+            .then((viaje)=>{
+                setViaje(viaje);
+                setLoggedIn(true);
+            })
+            .catch(()=>{
+                setLoggedIn(false);
+            })
+            .finally(()=>{
+                setLoading(false);
+            })
     },[]);
 
+    const fetchViaje = async ()=>{
+        let viaje = await ColectuberService.getViaje();
+        console.log(viaje);
+        return viaje;
+    }
+
     const login = async (userName, password)=>{
-        let token = await AuthService.authenticate(userName, password);
-        await AuthService.saveToken(token);
+        let viaje = await AuthService.login(userName, password, fetchViaje);
+        setViaje(viaje);
         setLoggedIn(true);
     }
 
-    const logout = async()=>{
-        await AuthService.removeToken();
+    const logout = async ()=>{
+        setViaje(null);
         setLoggedIn(false);
     }
 
@@ -31,6 +49,7 @@ export const AuthProvider = ({children})=>{
         value={{
             loading,
             isLoggedIn,
+            viaje,
             login,
             logout
         }}

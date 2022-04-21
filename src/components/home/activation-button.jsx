@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button,Alert } from 'react-native';
+import { View, Text, Button, Alert } from 'react-native';
 import LocationService from 'src/services/location-service';
 
 const ActivationButton = () => {
@@ -25,93 +25,73 @@ const ActivationButton = () => {
             setLoading(false);
         }
 
-        init();
+        init()
+            .catch(err=>console.error(err));
     }, []);
 
-    const handleError = (error)=>{
+    const handleError = (error) => {
         setError(error.message);
         console.error(error);
     }
 
-    const activate = ()=>{
+    const activate = () => {
         setReady(false);
         setError("");
         LocationService.startLocationTracking()
-            .then(()=>setActive(true))
-            .catch((error)=>handleError(error))
-            .finally(()=>setReady(true))
+            .then(() => setActive(true))
+            .catch((error) => handleError(error))
+            .finally(() => setReady(true))
     }
 
-    const deactivate = ()=>{
+    const deactivate = () => {
         setReady(false);
         setError("");
         LocationService.stopLocationTracking()
-            .then(()=>setActive(false))
-            .catch((error)=>handleError(error))
-            .finally(()=>setReady(true))
+            .then(() => setActive(false))
+            .catch((error) => handleError(error))
+            .finally(() => setReady(true))
     }
 
-    const alerts =()=> {
-        if (!active) {
-          Alert.alert(
-            'ColectuberApp',
-            'Desea activar su Ubicacion',
-            [
-              {
-                text: 'No',
-                onPress: () => Alert.alert('No Pressed'),
-                style: 'No',
-              },
-              {
+    const confirmAction = (title,  message, action)=>{
+        Alert.alert(title, message, [
+            {
+                text:'No',
+                onPress:()=>{},
+                style:'No'
+            },
+            {
                 text: 'Si',
-                onPress: () => {
-                    activate()
-                },
-              },
-            ],
+                onPress: action,
+            }
+        ])
+    }
 
-          )
-        } else {
-          Alert.alert(
-            'ColectuberApp',
-            'Desea desactivar su Ubicacion',
-            [
-              {
-                text: 'No',
-                onPress: () => Alert.alert('No Pressed'),
-                style: 'No',
-              },
-              {
-                text: 'Si',
-                onPress: () => {
-                    deactivate()
-                },
-              },
-            ],
-          )
-        }
-      }
-    const render = ()=>{
-        const renderButton = ()=>{
-            if(!active){
+    const render = () => {
+        const renderButton = () => {
+            if (!active) {
                 return <Button
                     title='Activate Location'
-                    onPress={alerts}
+                    onPress={()=>{
+                        confirmAction("Colectuber-App", "Desea activar su ubicacion", activate);
+                    }}
                     disabled={!(hasPermissions && ready)}
                 />
-            }else{
+            } else {
                 return <Button
                     title='Deactivate Location'
-                    onPress={alerts}
+                    onPress={()=>{
+                        confirmAction( "Colectuber-App", "Desea desactivar su ubicacion", deactivate);
+                    }}
                     disabled={!ready}
                 />
             }
         }
-        const renderError = ()=>{
-            if(error) return <Text>{error}</Text>
+        
+        const renderError = () => {
+            if (error) return <Text>{error}</Text>
         }
 
-        if(loading) return <Text>Loading...</Text>
+        if (loading) return <Text>Loading...</Text>
         return <>
             {renderButton()}
             {renderError()}

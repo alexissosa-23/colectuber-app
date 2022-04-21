@@ -1,6 +1,6 @@
 import * as Location from "expo-location";
 import * as TaskManager from "expo-task-manager";
-import AuthService from "./auth-service";
+import ColectuberService from "./colectuber-service";
 
 const TASK_NAME = "BACKGROUND_LOCATION_TASK"
 
@@ -11,14 +11,17 @@ TaskManager.defineTask(TASK_NAME, async ({ data, error }) => {
     }
     if (data) {
         const { locations } = data;
-        const location = locations[0];
+        const location = locations[locations.length - 1];
         if (location) {
-            // Do something with location...
-            console.log(location);
-            AuthService.test()
-                .then((res)=>{
-                    console.log(res);
-                });
+            let datos = {
+                posicionColectivo: {
+                    latitud: location.coords.latitude,
+                    longitud: location.coords.longitude
+                },
+                choferId: 19
+            }
+            console.log(datos);
+            ColectuberService.postUbicacion(datos);
         }
     }
 });
@@ -68,10 +71,10 @@ const startLocationTracking = async () => {
     });
 }
 
-const stopLocationTracking = async ()=>{
+const stopLocationTracking = async () => {
     //Si no comenzo
     let hasStarted = await isTrackingLocation();
-    if(!hasStarted) throw new Error("Tracking not started.");
+    if (!hasStarted) throw new Error("Tracking not started.");
     //Parar
     Location.stopLocationUpdatesAsync(TASK_NAME);
 }
