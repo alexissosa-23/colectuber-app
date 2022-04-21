@@ -8,25 +8,9 @@ const authenticate = async (userName, password) => {
         userName,
         password
     });
-
-    /*
-    let responce = await fetch("https://colectuber-backend.azurewebsites.net/authenticate", {
-        method:"POST",
-        headers:{
-            "Accept": 'application/json',
-            'Content-Type': 'application/json'
-        },
-        redirect:"follow",
-        body:JSON.stringify({
-            userName, 
-            password
-        })
-    })
-
-    let data = await responce.text();
-    console.log(data);
-    */
     
+    console.log(responce.data);
+
     return responce.data;
 }
 

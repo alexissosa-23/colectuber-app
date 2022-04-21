@@ -1,6 +1,5 @@
 import * as Location from "expo-location";
 import * as TaskManager from "expo-task-manager";
-import AuthService from "./auth-service";
 import ColectuberService from "./colectuber-service";
 
 const TASK_NAME = "BACKGROUND_LOCATION_TASK"
@@ -21,6 +20,7 @@ TaskManager.defineTask(TASK_NAME, async ({ data, error }) => {
                 },
                 choferId: 19
             }
+            console.log(datos);
             ColectuberService.postUbicacion(datos);
         }
     }
