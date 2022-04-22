@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import { View, Text, Button, StyleSheet, Dimensions } from 'react-native';
 import { useAuthContext } from 'src/contexts/auth-context-provider';
+import ColectuberService from 'src/services/colectuber-service';
 import ActivationButton from './activation-button';
 
 var { height } = Dimensions.get('window');
 
 var box_count = 3;
 var box_height = height / box_count;
+var meta ='jgcjgcj';
+
 
 const Home = () => {
-    const authContext = useAuthContext();
 
+
+
+    const authContext = useAuthContext();
     return <View style={styles.container}>
         <View style={[styles.box, styles.box1]}>
             <Text style={styles.containerText}>
@@ -23,6 +28,10 @@ const Home = () => {
             </Text>
             <ActivationButton />
             <Button title='Log Out' onPress={authContext.logout}/>
+            <Text style={styles.containerText}>
+                Destino (viaje):
+            </Text>
+            <Text>{JSON.stringify(authContext.viaje)}</Text>
         </View>
         <View style={[styles.box, styles.box3]}></View>
     </View>
