@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, Alert } from 'react-native';
 import LocationService from 'src/services/location-service';
+import Loading from '../loading/loading';
 
 const ActivationButton = () => {
     //Estados
@@ -86,12 +87,12 @@ const ActivationButton = () => {
                 />
             }
         }
-        
+
         const renderError = () => {
             if (error) return <Text>{error}</Text>
         }
 
-        if (loading) return <Text>Loading...</Text>
+        if (loading) return <Button disabled={true} title= "Loading..."/>
         return <>
             {renderButton()}
             {renderError()}
