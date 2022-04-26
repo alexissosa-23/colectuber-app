@@ -13,7 +13,7 @@ const Login = () => {
     const [pass, setPass] = useState("");
     const [ready, setReady] = useState(true);
 
-
+//Autenticacion
     const login = () => {
         if(!name || !pass){
             return
