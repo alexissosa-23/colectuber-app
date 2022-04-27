@@ -1,4 +1,4 @@
-import React, { Component,useState } from 'react';
+import React, { Component,useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, Dimensions } from 'react-native';
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 import ColectuberService from 'src/services/colectuber-service';
@@ -8,7 +8,6 @@ var { height } = Dimensions.get('window');
 
 var box_count = 3;
 var box_height = height / box_count;
-var meta = 'jgcjgcj';
 
 
 const Home = () => {
@@ -17,9 +16,20 @@ const Home = () => {
 
     const authContext = useAuthContext();
     const [loading, setLoading] = useState(true);
+    const [viaje,setViaje] = useState("");
 
-
-    return  <View style={styles.container}>
+    useEffect(()=>{
+        //Check if logged in
+        ColectuberService.getViaje()
+            .then((viaje)=>{
+                //setLoggedIn(true);
+                setViaje(viaje)
+                setLoading(false)
+                console.log("viaje ",viaje)
+            })
+    },[]);
+    if(!loading){
+        return  <View style={styles.container}>
         <View style={[styles.box, styles.box1]}>
             <Text style={styles.containerText}>
                 Home
@@ -28,9 +38,9 @@ const Home = () => {
         <View style={[styles.box, styles.box2]}>
             <View style={styles.contenedorViaje}>
                 <Text style={styles.containerTextViaje}>Viaje:</Text>
-                <Text>Conductor: {JSON.stringify(authContext.chofer.nombre)}</Text>
-                <Text>Destino: {JSON.stringify(authContext.chofer.apellido)}</Text>
-                <Text>Descripcion: {JSON.stringify(authContext.chofer.correo_electronico)}</Text>
+                <Text>Conductor: {JSON.stringify(authContext.chofer.nombre)} {JSON.stringify(authContext.chofer.apellido)}</Text>
+                <Text>Destino: {viaje.recorrido.nombre}</Text>
+                <Text>Descripcion: {viaje.recorrido.descripcion}</Text>
             </View>
             <Text style={styles.containerText}>
                 ColectuberApp
@@ -43,6 +53,34 @@ const Home = () => {
         </View>
         <View style={[styles.box, styles.box3]}></View>
     </View>
+    }
+    if(loading){
+        return  <View style={styles.container}>
+        <View style={[styles.box, styles.box1]}>
+            <Text style={styles.containerText}>
+                Home
+            </Text>
+        </View>
+        <View style={[styles.box, styles.box2]}>
+            <View style={styles.contenedorViaje}>
+                <Text style={styles.containerTextViaje}>Viaje:</Text>
+                <Text>Conductor: {JSON.stringify(authContext.chofer.nombre)} {JSON.stringify(authContext.chofer.apellido)}</Text>
+                <Text>Destino: </Text>
+                <Text>Descripcion: </Text>
+            </View>
+            <Text style={styles.containerText}>
+                ColectuberApp
+            </Text>
+            <View style={styles.boton}>
+            <ActivationButton />
+            </View>
+
+            <Button title='Log Out' onPress={authContext.logout} />
+        </View>
+        <View style={[styles.box, styles.box3]}></View>
+    </View>
+    }
+
 }
 const styles = StyleSheet.create({
     container: {
