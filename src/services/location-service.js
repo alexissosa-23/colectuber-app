@@ -18,7 +18,6 @@ TaskManager.defineTask(TASK_NAME, async ({ data, error }) => {
                     latitud: location.coords.latitude,
                     longitud: location.coords.longitude
                 },
-                choferId: 19
             }
             console.log(datos);
             ColectuberService.postUbicacion(datos);
