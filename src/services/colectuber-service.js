@@ -6,9 +6,14 @@ const postUbicacion = async (data)=>{
 }
 
 const getViaje = async ()=>{
-    let responce = await API.get("/api/colectuber/viaje_chofer");
+    let responce = await API.get("/api/colectuber/get-viaje");
     return responce.data;
 }
+const getChofer = async ()=>{
+    let responce = await API.get("/api/colectuber/get-chofer");
+    return responce.data;
+}
+
 
 const parseBeanToDtoColectivoUbicacion =(data)=>{
     let dto = {
@@ -23,7 +28,8 @@ const parseBeanToDtoColectivoUbicacion =(data)=>{
 
 const ColectuberService = {
     postUbicacion,
-    getViaje
+    getViaje,
+    getChofer,
 };
 
 export default ColectuberService;

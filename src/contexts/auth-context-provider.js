@@ -11,13 +11,13 @@ export const useAuthContext = ()=>{
 export const AuthProvider = ({children})=>{
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [viaje, setViaje] = useState(null);
+    const [chofer, setChofer] = useState(null);
 
     useEffect(()=>{
         //Check if logged in
-        AuthService.checkLogin(fetchViaje)
-            .then((viaje)=>{
-                setViaje(viaje);
+        AuthService.checkLogin(fetchChofer)
+            .then((chofer)=>{
+                setChofer(chofer);
                 setLoggedIn(true);
             })
             .catch(()=>{
@@ -28,20 +28,20 @@ export const AuthProvider = ({children})=>{
             })
     },[]);
 
-    const fetchViaje = async ()=>{
-        let viaje = await ColectuberService.getViaje();
-        console.log(viaje);
-        return viaje;
+    const fetchChofer = async ()=>{
+        let chofer = await ColectuberService.getChofer();
+        console.log(chofer);
+        return chofer;
     }
 
     const login = async (userName, password)=>{
-        let viaje = await AuthService.login(userName, password, fetchViaje);
-        setViaje(viaje);
+        let chofer = await AuthService.login(userName, password, fetchChofer);
+        setChofer(chofer);
         setLoggedIn(true);
     }
 
     const logout = async ()=>{
-        setViaje(null);
+        setChofer(null);
         setLoggedIn(false);
     }
 
@@ -49,7 +49,7 @@ export const AuthProvider = ({children})=>{
         value={{
             loading,
             isLoggedIn,
-            viaje,
+            chofer,
             login,
             logout
         }}
