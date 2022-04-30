@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 
-import { Button, TextInput, View, KeyboardAvoidingView, StyleSheet} from 'react-native';
+import { Button,Text, TextInput, View, KeyboardAvoidingView, StyleSheet} from 'react-native';
 import BordeSuperior from './BordeSuperior.jsx';
 import LogoInicioSesion from './LogoInicioSesion.jsx';
 import Titulo from './Titulo.jsx';
@@ -30,8 +30,10 @@ const Login = () => {
     return (
 
         <View style={styles.container}>
+            <View >
+                <Text style={styles.container3}> ejhdeh</Text>
+            </View>
             <KeyboardAvoidingView behavior='padding'>
-                <BordeSuperior />
                 <Titulo />
                 <LogoInicioSesion />
                 <View>
@@ -78,13 +80,16 @@ const Login = () => {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
+        marginTop:25,
+      //flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: '#ffffff',
       paddingBottom: 90,
-      color: '#000000',
-  
+      paddingLeft:30,
+      paddingRight:30,
+     // color: '#000000',
+
     },
     container2: {
       marginTop: 60,
@@ -98,10 +103,18 @@ const styles = StyleSheet.create({
       borderRadius: 20,
       borderColor: 'rgb(255, 127, 39)',
       fontSize: 15,
-  
+
     },
-  
+    container3: {
+        flexDirection:"column",
+        backgroundColor:'#000000',
+        flexBasis:60,
+        paddingLeft: 200,
+        paddingRight:200,
+
+    },
+
   });
-  
+
 
 export default Login;

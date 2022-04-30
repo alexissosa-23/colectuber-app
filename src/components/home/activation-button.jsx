@@ -30,11 +30,14 @@ const ActivationButton = () => {
             .catch(err=>console.error(err));
     }, []);
 
+
+    //manejar el error
     const handleError = (error) => {
         setError(error.message);
         console.error(error);
     }
 
+   //activar la ubicacion al hacer clic
     const activate = () => {
         setReady(false);
         setError("");
@@ -44,6 +47,8 @@ const ActivationButton = () => {
             .finally(() => setReady(true))
     }
 
+
+     //desactivar la ubicacion al hacer clic
     const deactivate = () => {
         setReady(false);
         setError("");
@@ -53,6 +58,7 @@ const ActivationButton = () => {
             .finally(() => setReady(true))
     }
 
+    //Mensaje de confirmacion al apretar el boton de Activar o desactivar
     const confirmAction = (title,  message, action)=>{
         Alert.alert(title, message, [
             {

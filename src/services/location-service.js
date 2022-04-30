@@ -25,6 +25,7 @@ TaskManager.defineTask(TASK_NAME, async ({ data, error }) => {
     }
 });
 
+//solicitar permisos
 const requestPermissions = async () => {
     const foregroundPermission = await Location.requestForegroundPermissionsAsync();
     if (!foregroundPermission.granted) return false;
@@ -33,6 +34,7 @@ const requestPermissions = async () => {
     return true;
 }
 
+// obtener los permisos
 const getPermissions = async () => {
     const foregroundPermission = await Location.getForegroundPermissionsAsync();
     if (!foregroundPermission.granted) return false;
@@ -41,6 +43,7 @@ const getPermissions = async () => {
     return true;
 }
 
+//Si ya comenzo el viaje
 const isTrackingLocation = async () => {
     let istracking = await Location.hasStartedLocationUpdatesAsync(TASK_NAME);
     return istracking;
@@ -58,7 +61,7 @@ const startLocationTracking = async () => {
     let hasStarted = await isTrackingLocation();
     if (hasStarted) throw new Error("Tracking already started.");
 
-    //Comenzar
+    //Comenzar (notificacion en el telefono)
     await Location.startLocationUpdatesAsync(TASK_NAME, {
         accuracy: Location.Accuracy.BestForNavigation,
         showsBackgroundLocationIndicator: true,
