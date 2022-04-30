@@ -4,9 +4,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from 'src/components/home/home';
 import Login from 'src/components/login/login';
 import Loading from 'src/components/loading/loading';
-import { AuthProvider, useAuthContext } from 'src/contexts/auth-context-provider';
+import { AuthProvider, useAuthContext } from 'src/contexts/auth-context-provider'
+
+
 
 export default function App() {
+
   return (
     <AuthProvider>
       <AppNavigator/>
@@ -22,7 +25,7 @@ function AppNavigator() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator 
+      <Stack.Navigator
         screenOptions={{
           headerShown: false
         }}

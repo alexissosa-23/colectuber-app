@@ -1,9 +1,9 @@
-import React, { Component,useState, useEffect } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, Dimensions } from 'react-native';
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 import ColectuberService from 'src/services/colectuber-service';
 import ActivationButton from './activation-button';
-
+import Cargando from './cargando';
 var { height } = Dimensions.get('window');
 
 var box_count = 3;
@@ -12,73 +12,77 @@ var box_height = height / box_count;
 
 const Home = () => {
 
-
-
+    //Estados
     const authContext = useAuthContext();
     const [loading, setLoading] = useState(true);
-    const [viaje,setViaje] = useState("");
+    const [viaje, setViaje] = useState(null);
 
-    useEffect(()=>{
-        //Check if logged in
+
+    // obtener viaje al inicio
+    useEffect(() => {
         ColectuberService.getViaje()
-            .then((viaje)=>{
-                //setLoggedIn(true);
+            .then((viaje) => {
+                // stop()
                 setViaje(viaje)
                 setLoading(false)
-                console.log("viaje ",viaje)
+            }).catch(() => {
+                setLoading(false)
             })
-    },[]);
-    if(!loading){
-        return  <View style={styles.container}>
-        <View style={[styles.box, styles.box1]}>
-            <Text style={styles.containerText}>
-                Home
-            </Text>
-        </View>
-        <View style={[styles.box, styles.box2]}>
-            <View style={styles.contenedorViaje}>
-                <Text style={styles.containerTextViaje}>Viaje:</Text>
-                <Text>Conductor: {JSON.stringify(authContext.chofer.nombre)} {JSON.stringify(authContext.chofer.apellido)}</Text>
-                <Text>Destino: {viaje.recorrido.nombre}</Text>
-                <Text>Descripcion: {viaje.recorrido.descripcion}</Text>
-            </View>
-            <Text style={styles.containerText}>
-                ColectuberApp
-            </Text>
-            <View style={styles.boton}>
-            <ActivationButton />
+    }, []);
+    const renderContet = () => {
+        if (viaje) {
+            return (
+            <View>
+                <View style={styles.contenedorViaje}>
+                    <Text style={styles.containerTextViaje}>Viaje:</Text>
+                    <Text>Conductor: {JSON.stringify(authContext.chofer.nombre)} {JSON.stringify(authContext.chofer.apellido)}</Text>
+                    <Text>Destino: {viaje.recorrido.nombre}</Text>
+                    <Text>Descripcion: {viaje.recorrido.descripcion}</Text>
+                </View>
+
+                <View style={styles.boton}>
+                    <ActivationButton />
+                </View>
+                <Button title='Log Out' onPress={authContext.logout} />
             </View>
 
-            <Button title='Log Out' onPress={authContext.logout} />
-        </View>
-        <View style={[styles.box, styles.box3]}></View>
-    </View>
+            )} else {
+            return(
+            <View>
+                <View style={styles.contenedorViaje}>
+                    <Text style={styles.containerTextViaje}>Viaje:</Text>
+                    <Text>Conductor: </Text>
+                    <Text>Destino: Sin Viaje</Text>
+                    <Text>Descripcion: Sin Viaje</Text>
+                </View>
+
+                <Text style={styles.containerText2}>
+                    Señor: {'\n'} "{authContext.chofer.nombre} {authContext.chofer.apellido} "{'\n'} usted  no posee viaje por el {'\n'} momento
+                </Text>
+                <Button title='Log Out' onPress={authContext.logout} />
+            </View>
+            )}
     }
-    if(loading){
-        return  <View style={styles.container}>
-        <View style={[styles.box, styles.box1]}>
-            <Text style={styles.containerText}>
-                Home
-            </Text>
-        </View>
-        <View style={[styles.box, styles.box2]}>
-            <View style={styles.contenedorViaje}>
-                <Text style={styles.containerTextViaje}>Viaje:</Text>
-                <Text>Conductor: {JSON.stringify(authContext.chofer.nombre)} {JSON.stringify(authContext.chofer.apellido)}</Text>
-                <Text>Destino: </Text>
-                <Text>Descripcion: </Text>
-            </View>
-            <Text style={styles.containerText}>
-                ColectuberApp
-            </Text>
-            <View style={styles.boton}>
-            <ActivationButton />
-            </View>
 
-            <Button title='Log Out' onPress={authContext.logout} />
+    if (!loading) {
+            return <View style={styles.container}>
+                <View style={[styles.box, styles.box1]}>
+                    <Text style={styles.containerText}>
+                        Home
+                    </Text>
+                </View>
+                <View style={[styles.box, styles.box2]}>
+                    {renderContet()}
+                </View>
+                <View style={[styles.box, styles.box3]}></View>
+            </View>
+    }
+        else {
+        return <View style={styles.container}>
+            <Text style={styles.containerText}>
+            </Text>
+            <Cargando />
         </View>
-        <View style={[styles.box, styles.box3]}></View>
-    </View>
     }
 
 }
@@ -102,7 +106,7 @@ const styles = StyleSheet.create({
         flex: 10,
         backgroundColor: '#fff',
         alignItems: 'center',
-       // justifyContent: 'center',
+        // justifyContent: 'center',
     },
     //footer
     box3: {
@@ -113,6 +117,11 @@ const styles = StyleSheet.create({
     containerText: {
         paddingTop: 10,
         fontSize: 23,
+        textShadowColor: '#000000'
+    },
+    containerText2: {
+        paddingTop: 10,
+        fontSize: 20,
         textShadowColor: '#000000'
     },
     //titulo viaje
@@ -128,12 +137,12 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         paddingLeft: 10,
         paddingRight: 10,
-        marginTop:20,
-        marginBottom:25,
+        marginTop: 20,
+        marginBottom: 25,
     },
     //boton Activacion
     boton: {
-        marginBottom:25,
+        marginBottom: 25,
         marginTop: 6,
     },
 });
