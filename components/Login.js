@@ -27,6 +27,7 @@ export default class Login extends Component {
     return (
 
       <View>
+        
           <BordeSuperior />
            <Titulo />
           <LogoInicioSesion />
