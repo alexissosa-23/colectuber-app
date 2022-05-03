@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "login-basico",
-    "slug": "snack-595a3aa5-9cc1-4a05-b504-e7c955d584b6",
+    "name": "colect-app",
+    "slug": "colect-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,12 +23,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      },
-      "package": "com.josesosa96.snack595a3aa59cc14a05b504e7c955d584b6"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "description": "\nModelo de login básico"
+    }
   }
 }
