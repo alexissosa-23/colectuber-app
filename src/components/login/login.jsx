@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 
 import { Image, Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
-import LogoInicioSesion from './LogoInicioSesion.jsx';
+
 
 const Login = () => {
     const authContext = useAuthContext();
@@ -24,14 +24,37 @@ const Login = () => {
                 setReady(true);
             })
     }
-
     return (
 
         <View style={styles.container}>
 
             <Text style={styles.bordeSuperior}> BordeSuperior</Text>
-            <Text style={styles.titulo}> Colectúber</Text>
-            <Image style={styles.logo} source={require("src/components/login/icons//logocolectivo.png")}/>
+
+            <TouchableOpacity
+                activeOpacity={0.75}
+                style={styles.titulo}
+            >
+                <Image
+                    style={styles.image}
+                    resizeMode='contain'
+                    source={require("src/components/login/icons//titulo.png")}
+                />
+
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                activeOpacity={0.75}
+                style={styles.logo}
+            >
+                <Image
+                    style={styles.image}
+                    resizeMode='contain'
+                    source={require("src/components/login/icons//logo.png")}
+                />
+            </TouchableOpacity>
+
+
+
             <TextInput style={styles.input}
                 value={name}
                 placeholder={'Usuario o Correo Electronico '}
@@ -48,13 +71,17 @@ const Login = () => {
             />
 
             <Text style={styles.bordeInput}></Text>
+
+
             <TouchableOpacity
                 style={styles.boton}
                 disabled={!ready}
                 onPress={login}
             >
-                <Text style={styles.boton}>INICIAR SESION</Text>
+                <Text style={styles.boton2}>INICIAR SESION</Text>
+
             </TouchableOpacity>
+
 
 
 
@@ -66,7 +93,6 @@ const Login = () => {
 
 
 }
-
 
 const styles = StyleSheet.create({
     container: {
@@ -88,20 +114,27 @@ const styles = StyleSheet.create({
 
     },
     titulo: {
-        flexDirection: "column",
-        backgroundColor: '#ffffff',
         flex: 1,
-        fontSize: 50,
+        overflow: 'hidden',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        backgroundColor: 'white',
+        position: 'relative',
+        width: 300,
     },
+
+    //logo imagen contenedor
     logo: {
-        flexDirection: "column",
-        backgroundColor: '#ffffff',
         flex: 3,
+        overflow: 'hidden',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        backgroundColor: 'white',
+        position: 'relative',
     },
+
+    image: {
+        flex: 1
+    },
+
     input: {
         flexDirection: "column",
         flex: 1,
@@ -121,10 +154,26 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         backgroundColor: 'rgb(255, 127, 39)',
         width: 200,
-        flex: 0.6,
+        //flex: 0.6,
+        height: 45,
         fontSize: 18,
         color: 'rgb(255, 255, 255)',
         borderRadius: 20,
+
+
+    },
+    boton2: {
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        textAlign: 'center',
+        backgroundColor: 'rgb(255, 127, 39)',
+        width: 200,
+        //flex: 0.6,
+        height: 45,
+        fontSize: 18,
+        color: 'rgb(255, 255, 255)',
+        borderRadius: 20,
+        paddingTop: 10,
 
 
     },

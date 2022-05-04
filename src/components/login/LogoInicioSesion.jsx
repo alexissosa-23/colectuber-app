@@ -5,7 +5,7 @@ export default class LogoInicioSesion extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.logo} source={require("src/components/login/icons//logocolectivo.png")}/>
+        <Image style={styles.logo} source={require("src/components/login/icons//logo.png")}/>
       </View>
     );
   }
