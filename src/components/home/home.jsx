@@ -59,7 +59,6 @@ const Home = () => {
                         <Text>Destino: Sin Viaje</Text>
                         <Text>Descripcion: Sin Viaje</Text>
                     </View>
-
                     <Text style={styles.containerText2}>
                         Señor: {'\n'} "{authContext.chofer.nombre} {authContext.chofer.apellido} "{'\n'} usted  no posee viaje por el {'\n'} momento
                     </Text>
@@ -69,10 +68,10 @@ const Home = () => {
         }
     }
 
-    //Perfil del conductor nombre, Apellido, correo
+    //Vista del Perfil del conductor nombre, Apellido, correo
     const perfil =()=>{
         return(
-        <View style={{marginTop:15,marginBottom:50, borderColor:'#e3aa1a',borderWidth:3}}>
+        <View style={styles.containerViewPerfil}>
             <Text style={styles.containerTextViaje}>Perfil:</Text>
                         <Text style={styles.containerTextPerfil}>Nombre: {authContext.chofer.nombre}</Text>
                         <Text style={styles.containerTextPerfil}>Apellido: {authContext.chofer.apellido} </Text>
@@ -202,5 +201,12 @@ const styles = StyleSheet.create({
         marginRight:10,
         marginBottom:2,
     },
+    // el contenedor de perfil
+    containerViewPerfil: {
+        marginTop:15,
+        marginBottom:50,
+        borderColor:'#e3aa1a',
+        borderWidth:3,
+    }
 });
 export default Home;
