@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 
-import { Button, Text, TextInput, View, StyleSheet } from 'react-native';
+import { Image, Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
 import LogoInicioSesion from './LogoInicioSesion.jsx';
 
 const Login = () => {
@@ -31,13 +31,14 @@ const Login = () => {
 
             <Text style={styles.bordeSuperior}> BordeSuperior</Text>
             <Text style={styles.titulo}> Colectúber</Text>
-
+            <Image style={styles.logo} source={require("src/components/login/icons//logocolectivo.png")}/>
             <TextInput style={styles.input}
                 value={name}
                 placeholder={'Usuario o Correo Electronico '}
                 onChangeText={newName => setName(newName)}
             />
 
+            <Text style={styles.bordeInput}></Text>
 
             <TextInput style={styles.input}
                 value={pass}
@@ -45,16 +46,19 @@ const Login = () => {
                 secureTextEntry={true}
                 onChangeText={newPass => setPass(newPass)}
             />
-            <View style={styles.boton}>
-            <Button
-                color='rgb(255, 127, 39)'
+
+            <Text style={styles.bordeInput}></Text>
+            <TouchableOpacity
+                style={styles.boton}
                 disabled={!ready}
                 onPress={login}
-                title='INICIAR SESION'
+            >
+                <Text style={styles.boton}>INICIAR SESION</Text>
+            </TouchableOpacity>
 
-            />
-            </View>
-            <Text style={styles.bordeInferior}> BordeInferior</Text>
+
+
+            <Text style={styles.bordeInferior}></Text>
 
         </View>
 
@@ -80,18 +84,24 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         backgroundColor: '#000000',
         flex: 1,
-        width: 300,
+        width: 400,
 
     },
     titulo: {
         flexDirection: "column",
         backgroundColor: '#ffffff',
-        flex: 3,
-        fontSize: 40,
+        flex: 1,
+        fontSize: 50,
         alignItems: 'center',
         justifyContent: 'space-around',
     },
-
+    logo: {
+        flexDirection: "column",
+        backgroundColor: '#ffffff',
+        flex: 3,
+        alignItems: 'center',
+        justifyContent: 'space-around',
+    },
     input: {
         flexDirection: "column",
         flex: 1,
@@ -109,17 +119,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         textAlign: 'center',
-        borderRadius: 20,
-        fontSize: 15,
-        flex: 1,
-        height: 45,
+        backgroundColor: 'rgb(255, 127, 39)',
         width: 200,
+        flex: 0.6,
+        fontSize: 18,
+        color: 'rgb(255, 255, 255)',
+        borderRadius: 20,
+
 
     },
     bordeInferior: {
         flexDirection: "column",
         backgroundColor: '#ffffff',
         flex: 2,
+
+    },
+    bordeInput: {
+        flexDirection: "column",
+        backgroundColor: '#ffffff',
+        flex: 0.5,
 
     },
 
