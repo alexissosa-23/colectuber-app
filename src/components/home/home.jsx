@@ -1,13 +1,11 @@
 import React, { Component, useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet, Dimensions, Image, IconButton } from 'react-native';
-import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import { View, Text, Button, StyleSheet, Dimensions, Image} from 'react-native';
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 import ColectuberService from 'src/services/colectuber-service';
 import ActivationButton from './activation-button';
 import Cargando from './cargando';
 
 var { height } = Dimensions.get('window');
-
 var box_count = 3;
 var box_height = height / box_count;
 
@@ -33,6 +31,7 @@ const Home = () => {
             })
     }, []);
 
+//renderizar la ventana en caso de que haya viaje o no
     const renderContet = () => {
         if (viaje) {
             return (
@@ -69,6 +68,7 @@ const Home = () => {
             )
         }
     }
+
     //Perfil del conductor nombre, Apellido, correo
     const perfil =()=>{
         return(
@@ -80,6 +80,7 @@ const Home = () => {
         </View>
         )
     }
+
     if (!loading) {
         if (menu) {
             return <View style={styles.container}>
@@ -195,6 +196,7 @@ const styles = StyleSheet.create({
         margin: 25,
 
     },
+    //todo los text de perfil
     containerTextPerfil: {
         marginLeft:20,
         marginRight:10,
