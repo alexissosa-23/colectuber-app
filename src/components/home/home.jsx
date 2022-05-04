@@ -1,9 +1,11 @@
 import React, { Component, useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, Button, StyleSheet, Dimensions, Image, IconButton } from 'react-native';
+import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 import ColectuberService from 'src/services/colectuber-service';
 import ActivationButton from './activation-button';
 import Cargando from './cargando';
+
 var { height } = Dimensions.get('window');
 
 var box_count = 3;
@@ -16,6 +18,7 @@ const Home = () => {
     const authContext = useAuthContext();
     const [loading, setLoading] = useState(true);
     const [viaje, setViaje] = useState(null);
+    const [menu, setMenu] = useState(false);
 
 
     // obtener viaje al inicio
@@ -29,44 +32,81 @@ const Home = () => {
                 setLoading(false)
             })
     }, []);
+
     const renderContet = () => {
         if (viaje) {
             return (
-            <View>
-                <View style={styles.contenedorViaje}>
-                    <Text style={styles.containerTextViaje}>Viaje:</Text>
-                    <Text>Conductor: {JSON.stringify(authContext.chofer.nombre)} {JSON.stringify(authContext.chofer.apellido)}</Text>
-                    <Text>Destino: {viaje.recorrido.nombre}</Text>
-                    <Text>Descripcion: {viaje.recorrido.descripcion}</Text>
+                <View>
+                    <View style={styles.contenedorViaje}>
+                        <Text style={styles.containerTextViaje}>Viaje:</Text>
+                        <Text>Conductor: {JSON.stringify(authContext.chofer.nombre)} {JSON.stringify(authContext.chofer.apellido)}</Text>
+                        <Text>Destino: {viaje.recorrido.nombre}</Text>
+                        <Text>Descripcion: {viaje.recorrido.descripcion}</Text>
+                    </View>
+
+                    <View style={styles.boton}>
+                        <ActivationButton />
+                    </View>
+
                 </View>
 
-                <View style={styles.boton}>
-                    <ActivationButton />
-                </View>
-                <Button title='Log Out' onPress={authContext.logout} />
-            </View>
+            )
+        } else {
+            return (
+                <View>
+                    <View style={styles.contenedorViaje}>
+                        <Text style={styles.containerTextViaje}>Viaje:</Text>
+                        <Text>Conductor: </Text>
+                        <Text>Destino: Sin Viaje</Text>
+                        <Text>Descripcion: Sin Viaje</Text>
+                    </View>
 
-            )} else {
-            return(
-            <View>
-                <View style={styles.contenedorViaje}>
-                    <Text style={styles.containerTextViaje}>Viaje:</Text>
-                    <Text>Conductor: </Text>
-                    <Text>Destino: Sin Viaje</Text>
-                    <Text>Descripcion: Sin Viaje</Text>
-                </View>
+                    <Text style={styles.containerText2}>
+                        Señor: {'\n'} "{authContext.chofer.nombre} {authContext.chofer.apellido} "{'\n'} usted  no posee viaje por el {'\n'} momento
+                    </Text>
 
-                <Text style={styles.containerText2}>
-                    Señor: {'\n'} "{authContext.chofer.nombre} {authContext.chofer.apellido} "{'\n'} usted  no posee viaje por el {'\n'} momento
-                </Text>
-                <Button title='Log Out' onPress={authContext.logout} />
-            </View>
-            )}
+                </View>
+            )
+        }
     }
-
+    //Perfil del conductor nombre, Apellido, correo
+    const perfil =()=>{
+        return(
+        <View style={{marginTop:15,marginBottom:50, borderColor:'#e3aa1a',borderWidth:3}}>
+            <Text style={styles.containerTextViaje}>Perfil:</Text>
+                        <Text style={styles.containerTextPerfil}>Nombre: {authContext.chofer.nombre}</Text>
+                        <Text style={styles.containerTextPerfil}>Apellido: {authContext.chofer.apellido} </Text>
+                        <Text style={styles.containerTextPerfil}>Correo: {authContext.chofer.correo_electronico}</Text>
+        </View>
+        )
+    }
     if (!loading) {
+        if (menu) {
             return <View style={styles.container}>
                 <View style={[styles.box, styles.box1]}>
+                    <Text onPress={() => { setMenu(!menu) }} style={{ marginTop: 20, marginLeft:3}}>
+                        <Image
+                            style={{ width: 25, height: 25 }}
+                            source={require("src/components/home/menu.png")}
+                        /></Text>
+                    <Text style={styles.containerText}>
+                        Menu
+                    </Text>
+                </View>
+                <View style={[styles.box, styles.box2]}>
+                    {perfil()}
+                    <Button  title='Cerrar Sesión' onPress={authContext.logout} />
+                </View>
+                <View style={[styles.box, styles.box3]}></View>
+            </View>
+        } else {
+            return <View style={styles.container}>
+                <View style={[styles.box, styles.box1]}>
+                    <Text onPress={() => { setMenu(!menu) }} style={{ marginTop: 20, marginLeft:3 }}>
+                        <Image
+                            style={{ width: 25, height: 25}}
+                            source={require("src/components/home/menu.png")}
+                        /></Text>
                     <Text style={styles.containerText}>
                         Home
                     </Text>
@@ -74,10 +114,13 @@ const Home = () => {
                 <View style={[styles.box, styles.box2]}>
                     {renderContet()}
                 </View>
+
                 <View style={[styles.box, styles.box3]}></View>
             </View>
+        }
+
     }
-        else {
+    else {
         return <View style={styles.container}>
             <Text style={styles.containerText}>
             </Text>
@@ -96,10 +139,11 @@ const styles = StyleSheet.create({
     },
     //header
     box1: {
-        flex: 1.2,
+        flex: 1.3,
+        flexDirection: 'row',
         backgroundColor: '#e3aa1a',
-        alignItems: 'center',
-        justifyContent: 'center',
+        //alignItems: 'center',
+        // justifyContent: 'center',
     },
     //content
     box2: {
@@ -115,8 +159,9 @@ const styles = StyleSheet.create({
     },
     //text
     containerText: {
-        paddingTop: 10,
-        fontSize: 23,
+        marginTop: 20,
+        marginLeft: 115,
+        fontSize: 27,
         textShadowColor: '#000000'
     },
     containerText2: {
@@ -127,6 +172,7 @@ const styles = StyleSheet.create({
     //titulo viaje
     containerTextViaje: {
         fontSize: 23,
+        marginLeft:3,
 
         textShadowColor: '#000000'
     },
@@ -144,6 +190,15 @@ const styles = StyleSheet.create({
     boton: {
         marginBottom: 25,
         marginTop: 6,
+    },
+    containerMenu: {
+        margin: 25,
+
+    },
+    containerTextPerfil: {
+        marginLeft:20,
+        marginRight:10,
+        marginBottom:2,
     },
 });
 export default Home;
