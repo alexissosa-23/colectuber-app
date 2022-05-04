@@ -32,34 +32,29 @@ const Login = () => {
             <Text style={styles.bordeSuperior}> BordeSuperior</Text>
             <Text style={styles.titulo}> Colectúber</Text>
 
-            <TextInput
-                style={{ flex: 1, borderBottomColor: '#000000', borderBottomWidth: 1, }}
+            <TextInput style={styles.input}
                 value={name}
                 placeholder={'Usuario o Correo Electronico '}
                 onChangeText={newName => setName(newName)}
             />
 
 
-            <TextInput
-                style={{ flex: 1, borderBottomColor: '#000000', borderBottomWidth: 1, }}
+            <TextInput style={styles.input}
                 value={pass}
                 placeholder={'Contraseña'}
                 secureTextEntry={true}
                 onChangeText={newPass => setPass(newPass)}
             />
-
+            <View style={styles.boton}>
             <Button
-                disabled={!ready}
-                style={{ flex: 1, height: 45, width: 200, }}
-                backgroundColor='rgb(255, 127, 39)'
                 color='rgb(255, 127, 39)'
-                borderColor='rgb(255, 127, 39)'
-                borderBottomColor='rgb(0, 127, 39)'
+                disabled={!ready}
                 onPress={login}
                 title='INICIAR SESION'
 
             />
-
+            </View>
+            <Text style={styles.bordeInferior}> BordeInferior</Text>
 
         </View>
 
@@ -76,45 +71,57 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         backgroundColor: '#ffffff',
         alignItems: 'center',
+        alignContent: 'space-between',
 
     },
 
     bordeSuperior: {
+        justifyContent: 'space-around',
         flexDirection: "column",
         backgroundColor: '#000000',
         flex: 1,
-       
+        width: 300,
+
     },
     titulo: {
         flexDirection: "column",
         backgroundColor: '#ffffff',
-        flex: 1,
+        flex: 3,
         fontSize: 40,
         alignItems: 'center',
+        justifyContent: 'space-around',
     },
 
     input: {
-        flexDirection: "row",
+        flexDirection: "column",
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         backgroundColor: '#ffffff',
-
+        width: 300,
+        borderBottomColor: '#000000',
+        borderBottomWidth: 1,
+        fontSize: 16,
 
     },
 
     boton: {
         alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'rgb(255, 127, 39)',
-        color: 'rgb(0, 0, 0)',
+        justifyContent: 'space-around',
         textAlign: 'center',
         borderRadius: 20,
-        borderColor: 'rgb(255, 127, 39)',
         fontSize: 15,
+        flex: 1,
+        height: 45,
+        width: 200,
 
     },
+    bordeInferior: {
+        flexDirection: "column",
+        backgroundColor: '#ffffff',
+        flex: 2,
 
+    },
 
 });
 
