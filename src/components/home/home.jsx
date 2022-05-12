@@ -1,11 +1,13 @@
 import React, { Component, useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet, Dimensions, Image} from 'react-native';
+import { View, Text, Button, StyleSheet, Dimensions, Image, IconButton } from 'react-native';
+import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 import ColectuberService from 'src/services/colectuber-service';
 import ActivationButton from './activation-button';
 import Cargando from './cargando';
 
 var { height } = Dimensions.get('window');
+
 var box_count = 3;
 var box_height = height / box_count;
 
@@ -31,7 +33,6 @@ const Home = () => {
             })
     }, []);
 
-//renderizar la ventana en caso de que haya viaje o no
     const renderContet = () => {
         if (viaje) {
             return (
@@ -59,6 +60,7 @@ const Home = () => {
                         <Text>Destino: Sin Viaje</Text>
                         <Text>Descripcion: Sin Viaje</Text>
                     </View>
+
                     <Text style={styles.containerText2}>
                         Señor: {'\n'} "{authContext.chofer.nombre} {authContext.chofer.apellido} "{'\n'} usted  no posee viaje por el {'\n'} momento
                     </Text>
@@ -67,11 +69,10 @@ const Home = () => {
             )
         }
     }
-
-    //Vista del Perfil del conductor nombre, Apellido, correo
+    //Perfil del conductor nombre, Apellido, correo
     const perfil =()=>{
         return(
-        <View style={styles.containerViewPerfil}>
+        <View style={{marginTop:15,marginBottom:50, borderColor:'#e3aa1a',borderWidth:3}}>
             <Text style={styles.containerTextViaje}>Perfil:</Text>
                         <Text style={styles.containerTextPerfil}>Nombre: {authContext.chofer.nombre}</Text>
                         <Text style={styles.containerTextPerfil}>Apellido: {authContext.chofer.apellido} </Text>
@@ -79,7 +80,6 @@ const Home = () => {
         </View>
         )
     }
-
     if (!loading) {
         if (menu) {
             return <View style={styles.container}>
@@ -195,18 +195,10 @@ const styles = StyleSheet.create({
         margin: 25,
 
     },
-    //todo los text de perfil
     containerTextPerfil: {
         marginLeft:20,
         marginRight:10,
         marginBottom:2,
     },
-    // el contenedor de perfil
-    containerViewPerfil: {
-        marginTop:15,
-        marginBottom:50,
-        borderColor:'#e3aa1a',
-        borderWidth:3,
-    }
 });
 export default Home;
