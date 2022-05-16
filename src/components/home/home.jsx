@@ -31,7 +31,7 @@ export default function  Home (){
     const renderContet = () => {
         if (viaje) {
             return (
-                <View>
+                <View style={styles.containerViaje}>
                     <View style={styles.contenedorViaje}>
                         <Text style={styles.containerTextViaje}>Viaje:</Text>
                         <Text>Conductor: {JSON.stringify(authContext.chofer.nombre)} {JSON.stringify(authContext.chofer.apellido)}</Text>
@@ -67,7 +67,7 @@ export default function  Home (){
     if (!loading) {
             return(
             <View style={styles.container}>
-                <View style={[styles.box, styles.box2]}>
+                <View >
                     {renderContet()}
                 </View>
             </View>
@@ -86,26 +86,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-    },
-    box: {
-        height: box_height
-    },
-    //header
-    box1: {
-        flex: 1.3,
-        flexDirection: 'row',
-        backgroundColor: '#e3aa1a',
-    },
-    //content
-    box2: {
-        flex: 10,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-    },
-    //footer
-    box3: {
-        flex: .5,
-        backgroundColor: '#e3aa1a'
     },
     //text
     containerText: {
@@ -136,9 +116,14 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 25,
     },
+    containerViaje: {
+        marginLeft:10,
+        marginRight:10,
+    },
     //boton Activacion
     boton: {
         marginBottom: 25,
         marginTop: 6,
     },
+
 });
