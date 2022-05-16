@@ -5,10 +5,6 @@ import ColectuberService from 'src/services/colectuber-service';
 import ActivationButton from './activation-button';
 import Cargando from './cargando';
 
-var { height } = Dimensions.get('window');
-
-var box_count = 3;
-var box_height = height / box_count;
 
 export default function  Home (){
 

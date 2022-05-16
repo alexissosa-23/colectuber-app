@@ -7,6 +7,7 @@ export default function  Menu (){
 
     const authContext = useAuthContext();
 
+
     return <View >
             <Button title='Cerrar Sesión' onPress={authContext.logout} />
         </View>
