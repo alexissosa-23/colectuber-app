@@ -11,8 +11,7 @@ var { height } = Dimensions.get('window');
 var box_count = 3;
 var box_height = height / box_count;
 
-
-const Home = () => {
+export default function  Home (){
 
     //Estados
     const authContext = useAuthContext();
@@ -27,9 +26,9 @@ const Home = () => {
             .then((viaje) => {
                 // stop()
                 setViaje(viaje)
-                setLoading(false)
+                //setLoading(false)
             }).catch(() => {
-                setLoading(false)
+               // setLoading(false)
             })
     }, []);
 
@@ -70,21 +69,21 @@ const Home = () => {
         }
     }
     //Perfil del conductor nombre, Apellido, correo
-    const perfil =()=>{
-        return(
-        <View style={{marginTop:15,marginBottom:50, borderColor:'#e3aa1a',borderWidth:3}}>
-            <Text style={styles.containerTextViaje}>Perfil:</Text>
-                        <Text style={styles.containerTextPerfil}>Nombre: {authContext.chofer.nombre}</Text>
-                        <Text style={styles.containerTextPerfil}>Apellido: {authContext.chofer.apellido} </Text>
-                        <Text style={styles.containerTextPerfil}>Correo: {authContext.chofer.correo_electronico}</Text>
-        </View>
+    const perfil = () => {
+        return (
+            <View style={{ marginTop: 15, marginBottom: 50, borderColor: '#e3aa1a', borderWidth: 3 }}>
+                <Text style={styles.containerTextViaje}>Perfil:</Text>
+                <Text style={styles.containerTextPerfil}>Nombre: {authContext.chofer.nombre}</Text>
+                <Text style={styles.containerTextPerfil}>Apellido: {authContext.chofer.apellido} </Text>
+                <Text style={styles.containerTextPerfil}>Correo: {authContext.chofer.correo_electronico}</Text>
+            </View>
         )
     }
     if (!loading) {
         if (menu) {
             return <View style={styles.container}>
                 <View style={[styles.box, styles.box1]}>
-                    <Text onPress={() => { setMenu(!menu) }} style={{ marginTop: 20, marginLeft:3}}>
+                    <Text onPress={() => { setMenu(!menu) }} style={{ marginTop: 20, marginLeft: 3 }}>
                         <Image
                             style={{ width: 25, height: 25 }}
                             source={require("src/components/home/menu.png")}
@@ -95,12 +94,13 @@ const Home = () => {
                 </View>
                 <View style={[styles.box, styles.box2]}>
                     {perfil()}
-                    <Button  title='Cerrar Sesión' onPress={authContext.logout} />
+                    <Button title='Cerrar Sesión' onPress={authContext.logout} />
                 </View>
                 <View style={[styles.box, styles.box3]}></View>
             </View>
         } else {
-            return <View style={styles.container}>
+            return
+            <View style={styles.container}>
                 <View style={[styles.box, styles.box1]}>
                     <Text onPress={() => { setMenu(!menu) }} style={{ marginTop: 20, marginLeft:3 }}>
                         <Image
@@ -125,6 +125,7 @@ const Home = () => {
             <Text style={styles.containerText}>
             </Text>
             <Cargando />
+            <Button title='Cerrar Sesión' onPress={authContext.logout} />
         </View>
     }
 
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
     //titulo viaje
     containerTextViaje: {
         fontSize: 23,
-        marginLeft:3,
+        marginLeft: 3,
 
         textShadowColor: '#000000'
     },
@@ -196,9 +197,8 @@ const styles = StyleSheet.create({
 
     },
     containerTextPerfil: {
-        marginLeft:20,
-        marginRight:10,
-        marginBottom:2,
+        marginLeft: 20,
+        marginRight: 10,
+        marginBottom: 2,
     },
 });
-export default Home;
