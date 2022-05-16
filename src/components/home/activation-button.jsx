@@ -77,7 +77,7 @@ const ActivationButton = () => {
         const renderButton = () => {
             if (!active) {
                 return <Button
-                    title='Activate Location'
+                    title='Activar Ubicacion'
                     onPress={()=>{
                         confirmAction("Colectuber-App", "Desea activar su ubicacion", activate);
                     }}

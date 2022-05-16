@@ -1,6 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, Dimensions, Image, IconButton } from 'react-native';
-import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 import ColectuberService from 'src/services/colectuber-service';
 import ActivationButton from './activation-button';
@@ -17,18 +16,15 @@ export default function  Home (){
     const authContext = useAuthContext();
     const [loading, setLoading] = useState(true);
     const [viaje, setViaje] = useState(null);
-    const [menu, setMenu] = useState(false);
-
 
     // obtener viaje al inicio
     useEffect(() => {
         ColectuberService.getViaje()
             .then((viaje) => {
-                // stop()
                 setViaje(viaje)
-                //setLoading(false)
+                setLoading(false)
             }).catch(() => {
-               // setLoading(false)
+                setLoading(false)
             })
     }, []);
 
@@ -68,66 +64,22 @@ export default function  Home (){
             )
         }
     }
-    //Perfil del conductor nombre, Apellido, correo
-    const perfil = () => {
-        return (
-            <View style={{ marginTop: 15, marginBottom: 50, borderColor: '#e3aa1a', borderWidth: 3 }}>
-                <Text style={styles.containerTextViaje}>Perfil:</Text>
-                <Text style={styles.containerTextPerfil}>Nombre: {authContext.chofer.nombre}</Text>
-                <Text style={styles.containerTextPerfil}>Apellido: {authContext.chofer.apellido} </Text>
-                <Text style={styles.containerTextPerfil}>Correo: {authContext.chofer.correo_electronico}</Text>
-            </View>
-        )
-    }
     if (!loading) {
-        if (menu) {
-            return <View style={styles.container}>
-                <View style={[styles.box, styles.box1]}>
-                    <Text onPress={() => { setMenu(!menu) }} style={{ marginTop: 20, marginLeft: 3 }}>
-                        <Image
-                            style={{ width: 25, height: 25 }}
-                            source={require("src/components/home/menu.png")}
-                        /></Text>
-                    <Text style={styles.containerText}>
-                        Menu
-                    </Text>
-                </View>
-                <View style={[styles.box, styles.box2]}>
-                    {perfil()}
-                    <Button title='Cerrar Sesión' onPress={authContext.logout} />
-                </View>
-                <View style={[styles.box, styles.box3]}></View>
-            </View>
-        } else {
-            return
+            return(
             <View style={styles.container}>
-                <View style={[styles.box, styles.box1]}>
-                    <Text onPress={() => { setMenu(!menu) }} style={{ marginTop: 20, marginLeft:3 }}>
-                        <Image
-                            style={{ width: 25, height: 25}}
-                            source={require("src/components/home/menu.png")}
-                        /></Text>
-                    <Text style={styles.containerText}>
-                        Home
-                    </Text>
-                </View>
                 <View style={[styles.box, styles.box2]}>
                     {renderContet()}
                 </View>
-
-                <View style={[styles.box, styles.box3]}></View>
             </View>
-        }
-
-    }
+    )}
     else {
-        return <View style={styles.container}>
+        return (
+        <View style={styles.container}>
             <Text style={styles.containerText}>
             </Text>
             <Cargando />
-            <Button title='Cerrar Sesión' onPress={authContext.logout} />
         </View>
-    }
+    )}
 
 }
 const styles = StyleSheet.create({
@@ -143,15 +95,12 @@ const styles = StyleSheet.create({
         flex: 1.3,
         flexDirection: 'row',
         backgroundColor: '#e3aa1a',
-        //alignItems: 'center',
-        // justifyContent: 'center',
     },
     //content
     box2: {
         flex: 10,
         backgroundColor: '#fff',
         alignItems: 'center',
-        // justifyContent: 'center',
     },
     //footer
     box3: {
@@ -191,14 +140,5 @@ const styles = StyleSheet.create({
     boton: {
         marginBottom: 25,
         marginTop: 6,
-    },
-    containerMenu: {
-        margin: 25,
-
-    },
-    containerTextPerfil: {
-        marginLeft: 20,
-        marginRight: 10,
-        marginBottom: 2,
     },
 });
