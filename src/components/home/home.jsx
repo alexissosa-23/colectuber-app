@@ -38,7 +38,6 @@ export default function  Home (){
                     <View style={styles.boton}>
                         <ActivationButton />
                     </View>
-
                 </View>
 
             )
@@ -56,7 +55,6 @@ export default function  Home (){
                     <Text style={styles.containerText2}>
                         Señor: {'\n'} "{authContext.chofer.nombre} {authContext.chofer.apellido} "{'\n'} usted  no posee viaje por el {'\n'} momento
                     </Text>
-
                 </View>
             )
         }
@@ -109,12 +107,10 @@ const styles = StyleSheet.create({
         textShadowColor: '#000000'
     },
     containerTextViaje2: {
-       // color:  'rgb(25, 135, 255)',
        color:  'rgb(0, 0, 0)',
     },
     //View viaje
     contenedorViaje: {
-       // backgroundColor: 'rgb(224, 239, 255)',   
         color: 'rgb(0, 128, 192)',
         paddingBottom: 10,
         paddingTop: 10,
@@ -122,7 +118,6 @@ const styles = StyleSheet.create({
         paddingRight: 10,
         marginTop: 20,
         marginBottom: 25,
-        //borderColor:'rgb(255, 127, 39)',
         borderColor:'rgb(100, 100, 100)',
         borderWidth: 2,
         borderRadius:10

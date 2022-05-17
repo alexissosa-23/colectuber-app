@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-
 import { useAuthContext } from 'src/contexts/auth-context-provider';
-
 import { Image, Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
-
 
 const Login = () => {
     const authContext = useAuthContext();
     const [name, setName] = useState("");
     const [pass, setPass] = useState("");
     const [ready, setReady] = useState(true);
-
 
     const login = () => {
         if (!name || !pass) {
@@ -27,9 +23,7 @@ const Login = () => {
     return (
 
         <View style={styles.container}>
-
             <Text style={styles.bordeSuperior}> BordeSuperior</Text>
-
             <TouchableOpacity
                 activeOpacity={0.75}
                 style={styles.titulo}
@@ -52,8 +46,6 @@ const Login = () => {
                     source={require("src/components/login/icons//logo.png")}
                 />
             </TouchableOpacity>
-
-
 
             <TextInput style={styles.input}
                 value={name}
@@ -81,9 +73,6 @@ const Login = () => {
                 <Text style={styles.boton2}>INICIAR SESION</Text>
 
             </TouchableOpacity>
-
-
-
 
             <Text style={styles.bordeInferior}></Text>
 
