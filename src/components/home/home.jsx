@@ -82,8 +82,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         backgroundColor:'#ffffff',
-       
-        
+
     },
     //text
     containerText: {
@@ -126,6 +125,10 @@ const styles = StyleSheet.create({
         marginRight:10,
         
         
+    },
+    containerViaje: {
+        marginLeft:10,
+        marginRight:10,
     },
     //boton Activacion
     boton: {

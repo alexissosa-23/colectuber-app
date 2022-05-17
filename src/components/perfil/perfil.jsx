@@ -16,6 +16,7 @@ import { useAuthContext } from 'src/contexts/auth-context-provider';
             </View>
         </View>
       </View>
+
     );
   }
 
@@ -37,8 +38,6 @@ import { useAuthContext } from 'src/contexts/auth-context-provider';
         marginLeft: 20,
         marginRight: 10,
         marginBottom: 2,
-        
-        
     },
     containerBorde: {
         marginRight:15,
@@ -47,7 +46,6 @@ import { useAuthContext } from 'src/contexts/auth-context-provider';
         borderColor:'#646464',
         borderWidth: 3,
         borderRadius:10,
-        
-        
+
     },
   });
