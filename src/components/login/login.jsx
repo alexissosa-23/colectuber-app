@@ -1,11 +1,9 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 
-import { Button,Text, TextInput, View, KeyboardAvoidingView, StyleSheet} from 'react-native';
-import BordeSuperior from './BordeSuperior.jsx';
-import LogoInicioSesion from './LogoInicioSesion.jsx';
-import Titulo from './Titulo.jsx';
+import { Image, Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
+
 
 const Login = () => {
     const authContext = useAuthContext();
@@ -15,60 +13,79 @@ const Login = () => {
 
 
     const login = () => {
-        if(!name || !pass){
+        if (!name || !pass) {
             return
         }
         setReady(false)
         authContext.login(name, pass)
-            .catch(err=>{
+            .catch(err => {
                 console.error(err);
                 //Contrasena o username equivocado o error al autenticar
                 setReady(true);
             })
     }
-
     return (
 
         <View style={styles.container}>
-            <View >
-                <Text style={styles.container3}> ejhdeh</Text>
-            </View>
-            <KeyboardAvoidingView behavior='padding'>
-                <Titulo />
-                <LogoInicioSesion />
-                <View>
-                    <TextInput
-                        style={{ height: 50, width: 300, borderBottomColor: '#000000', borderBottomWidth: 1, paddingTop: 20, }}
-                        value={name}
-                        placeholder={'Usuario o Correo Electronico '}
-                        onChangeText={newName => setName(newName)}
-                    />
-                </View>
-                <View>
-                    <TextInput
-                        style={{ height: 50, width: 300, borderBottomColor: '#000000', borderBottomWidth: 1, marginTop: 40, paddingTop: 20, }}
-                        value={pass}
-                        placeholder={'Contraseña'}
-                        secureTextEntry={true}
-                        onChangeText={newPass => setPass(newPass)}
-                    />
-                </View>
-            </KeyboardAvoidingView>
 
-            <View style={styles.container2}>
-                <Button
-                    disabled = {!ready}
-                    style={{ height: 45, width: 200, marginTop: 60 }}
-                    backgroundColor='rgb(255, 127, 39)'
-                    color='rgb(255, 127, 39)'
-                    borderColor='rgb(255, 127, 39)'
-                    borderBottomColor='rgb(0, 127, 39)'
-                    onPress={login}
-                    title='INICIAR SESION'
+            <Text style={styles.bordeSuperior}> BordeSuperior</Text>
 
+            <TouchableOpacity
+                activeOpacity={0.75}
+                style={styles.titulo}
+            >
+                <Image
+                    style={styles.image}
+                    resizeMode='contain'
+                    source={require("src/components/login/icons//titulo.png")}
                 />
-            </View>
 
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                activeOpacity={0.75}
+                style={styles.logo}
+            >
+                <Image
+                    style={styles.image}
+                    resizeMode='contain'
+                    source={require("src/components/login/icons//logo.png")}
+                />
+            </TouchableOpacity>
+
+
+
+            <TextInput style={styles.input}
+                value={name}
+                placeholder={'Usuario o Correo Electronico '}
+                onChangeText={newName => setName(newName)}
+            />
+
+            <Text style={styles.bordeInput}></Text>
+
+            <TextInput style={styles.input}
+                value={pass}
+                placeholder={'Contraseña'}
+                secureTextEntry={true}
+                onChangeText={newPass => setPass(newPass)}
+            />
+
+            <Text style={styles.bordeInput}></Text>
+
+
+            <TouchableOpacity
+                style={styles.boton}
+                disabled={!ready}
+                onPress={login}
+            >
+                <Text style={styles.boton2}>INICIAR SESION</Text>
+
+            </TouchableOpacity>
+
+
+
+
+            <Text style={styles.bordeInferior}></Text>
 
         </View>
 
@@ -77,44 +94,107 @@ const Login = () => {
 
 }
 
-
 const styles = StyleSheet.create({
     container: {
-        marginTop:25,
-      //flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#ffffff',
-      paddingBottom: 90,
-      paddingLeft:30,
-      paddingRight:30,
-     // color: '#000000',
-
-    },
-    container2: {
-      marginTop: 60,
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: 45,
-      width: 200,
-      backgroundColor: 'rgb(255, 127, 39)',
-      color: 'rgb(0, 0, 0)',
-      textAlign: 'center',
-      borderRadius: 20,
-      borderColor: 'rgb(255, 127, 39)',
-      fontSize: 15,
-
-    },
-    container3: {
-        flexDirection:"column",
-        backgroundColor:'#000000',
-        flexBasis:60,
-        paddingLeft: 200,
-        paddingRight:200,
+        flexDirection: "column",
+        flex: 1,
+        justifyContent: 'space-around',
+        backgroundColor: '#ffffff',
+        alignItems: 'center',
+        alignContent: 'space-between',
 
     },
 
-  });
+    bordeSuperior: {
+        justifyContent: 'space-around',
+        flexDirection: "column",
+        backgroundColor: '#000000',
+        flex: 1,
+        width: 400,
+
+    },
+    titulo: {
+        flex: 1,
+        overflow: 'hidden',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        position: 'relative',
+        width: 300,
+    },
+
+    //logo imagen contenedor
+    logo: {
+        flex: 3,
+        overflow: 'hidden',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        position: 'relative',
+    },
+
+    image: {
+        flex: 1
+    },
+
+    input: {
+        flexDirection: "column",
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        backgroundColor: '#ffffff',
+        width: 300,
+        borderBottomColor: '#000000',
+        borderBottomWidth: 1,
+        fontSize: 16,
+
+    },
+
+    boton: {
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        textAlign: 'center',
+        backgroundColor: 'rgb(255, 127, 39)',
+        width: 200,
+        //flex: 0.6,
+        height: 45,
+        fontSize: 18,
+        color: 'rgb(255, 255, 255)',
+        borderRadius: 20,
+
+
+    },
+    boton2: {
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        textAlign: 'center',
+        backgroundColor: 'rgb(255, 127, 39)',
+        width: 200,
+        //flex: 0.6,
+        height: 45,
+        fontSize: 18,
+        color: 'rgb(255, 255, 255)',
+        borderRadius: 20,
+        paddingTop: 10,
+
+
+    },
+    bordeInferior: {
+        flexDirection: "column",
+        backgroundColor: '#ffffff',
+        flex: 2,
+
+    },
+    bordeInput: {
+        flexDirection: "column",
+        backgroundColor: '#ffffff',
+        flex: 0.5,
+
+    },
+
+});
 
 
 export default Login;
+
+
+
+
