@@ -41,8 +41,9 @@ export const AuthProvider = ({children})=>{
     }
 
     const logout = async ()=>{
-        setChofer(null);
         setLoggedIn(false);
+        setChofer(null);
+
     }
 
     return <AuthContext.Provider
