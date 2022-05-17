@@ -77,7 +77,7 @@ const ActivationButton = () => {
         const renderButton = () => {
             if (!active) {
                 return <Button
-                    color='rgb(255, 127, 39)'
+                    color='#FF7F27'
                     title='Activar Ubicacion'
                     onPress={()=>{
                         confirmAction("Colectuber-App", "Desea activar su ubicacion", activate);

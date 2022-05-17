@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor:'#ffffff',
+        backgroundColor:'#fff',
        
         
     },
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         textShadowColor: '#000000'
     },
     containerTextViaje2: {
-       color:  '#000000',
+       color: '#000000'
     },
     //View viaje
     contenedorViaje: {
