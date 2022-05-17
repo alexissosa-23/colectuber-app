@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button,Alert } from 'react-native';
+import { View, Button,Alert,StyleSheet } from 'react-native';
 import { AuthProvider,useAuthContext } from 'src/contexts/auth-context-provider';
 
 
@@ -26,7 +26,7 @@ export default function  Menu (){
         authContext.logout()
     }
 
-    return <View >
+    return <View style={styles.container} >
             <Button
             color='#ff7f27'
             title='Cerrar Sesión'
@@ -35,3 +35,13 @@ export default function  Menu (){
             }}/>
         </View>
 }
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'column',
+        backgroundColor:'#ffffff',
+        alignItems:'center',
+        justifyContent:'center',
+
+    }
+})
