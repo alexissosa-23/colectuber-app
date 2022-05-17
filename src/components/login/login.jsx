@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 import { Image, Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
 
+
 const Login = () => {
     const authContext = useAuthContext();
     const [name, setName] = useState("");
