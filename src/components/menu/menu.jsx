@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Button } from 'react-native';
-import { useAuthContext } from 'src/contexts/auth-context-provider';
+import { View, Button,Alert } from 'react-native';
+import { AuthProvider,useAuthContext } from 'src/contexts/auth-context-provider';
 
 
 export default function  Menu (){
@@ -21,11 +21,17 @@ export default function  Menu (){
             }
         ])
     }
+    const cerrarSesion = () =>{
+        console.log("Cerrar Sesion")
+        authContext.logout()
+    }
 
     return <View >
             <Button
             color='#ff7f27'
             title='Cerrar Sesión'
-            onPress={authContext.logout} />
+            onPress={()=>{
+                confirmAction("Colectuber-App", "Desea Cerrar Sesión",cerrarSesion );
+            }}/>
         </View>
 }
