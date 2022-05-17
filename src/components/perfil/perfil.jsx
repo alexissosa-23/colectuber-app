@@ -44,7 +44,7 @@ import { useAuthContext } from 'src/contexts/auth-context-provider';
         marginRight:15,
         marginLeft:15,
         marginTop: 25,
-        borderColor:'rgb(100, 100, 100)',
+        borderColor:'#646464',
         borderWidth: 3,
         borderRadius:10
         

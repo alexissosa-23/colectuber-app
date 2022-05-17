@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor:'rgb(255, 255, 255)',
+        backgroundColor:'#FFFFFF',
        
         
     },
@@ -103,22 +103,22 @@ const styles = StyleSheet.create({
     containerTextViaje: {
         fontSize: 23,
         marginLeft: 3,
-        color:  'rgb(0, 0, 0)',
+        color:  '#000000',
         textShadowColor: '#000000'
     },
     containerTextViaje2: {
-       color:  'rgb(0, 0, 0)',
+       color:  '#000000',
     },
     //View viaje
     contenedorViaje: {
-        color: 'rgb(0, 128, 192)',
+        color:'#0080C0',
         paddingBottom: 10,
         paddingTop: 10,
         paddingLeft: 10,
         paddingRight: 10,
         marginTop: 20,
         marginBottom: 25,
-        borderColor:'rgb(100, 100, 100)',
+        borderColor:'#646464',
         borderWidth: 2,
         borderRadius:10
     },
