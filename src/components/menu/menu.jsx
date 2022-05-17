@@ -9,6 +9,8 @@ export default function  Menu (){
 
 
     return <View >
-            <Button title='Cerrar Sesión' onPress={authContext.logout} />
+            <Button 
+            color='#ff7f27'
+            title='Cerrar Sesión' onPress={authContext.logout} />
         </View>
 }

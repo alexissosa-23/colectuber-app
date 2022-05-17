@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, Alert } from 'react-native';
 import LocationService from 'src/services/location-service';
-import Loading from '../loading/loading';
+
 
 const ActivationButton = () => {
     //Estados
@@ -77,6 +77,7 @@ const ActivationButton = () => {
         const renderButton = () => {
             if (!active) {
                 return <Button
+                    color='#FF7F27'
                     title='Activar Ubicacion'
                     onPress={()=>{
                         confirmAction("Colectuber-App", "Desea activar su ubicacion", activate);
@@ -85,7 +86,8 @@ const ActivationButton = () => {
                 />
             } else {
                 return <Button
-                    title='Deactivate Location'
+                    color='#FF7F27'
+                    title='Desactivar Ubicacion'
                     onPress={()=>{
                         confirmAction( "Colectuber-App", "Desea desactivar su ubicacion", deactivate);
                     }}

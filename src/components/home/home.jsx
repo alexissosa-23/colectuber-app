@@ -30,15 +30,14 @@ export default function  Home (){
                 <View style={styles.containerViaje}>
                     <View style={styles.contenedorViaje}>
                         <Text style={styles.containerTextViaje}>Viaje:</Text>
-                        <Text>Conductor: {JSON.stringify(authContext.chofer.nombre)} {JSON.stringify(authContext.chofer.apellido)}</Text>
-                        <Text>Destino: {viaje.recorrido.nombre}</Text>
-                        <Text>Descripcion: {viaje.recorrido.descripcion}</Text>
+                        <Text style={styles.containerTextViaje2}>Conductor: {JSON.stringify(authContext.chofer.nombre)} {JSON.stringify(authContext.chofer.apellido)}</Text>
+                        <Text style={styles.containerTextViaje2}>Destino: {viaje.recorrido.nombre}</Text>
+                        <Text style={styles.containerTextViaje2}>Descripcion: {viaje.recorrido.descripcion}</Text>
                     </View>
 
                     <View style={styles.boton}>
                         <ActivationButton />
                     </View>
-
                 </View>
 
             )
@@ -46,7 +45,8 @@ export default function  Home (){
             return (
                 <View>
                     <View style={styles.contenedorViaje}>
-                        <Text style={styles.containerTextViaje}>Viaje:</Text>
+                        <Text 
+                        style={styles.containerTextViaje}>Viaje:</Text>
                         <Text>Conductor: </Text>
                         <Text>Destino: Sin Viaje</Text>
                         <Text>Descripcion: Sin Viaje</Text>
@@ -55,7 +55,6 @@ export default function  Home (){
                     <Text style={styles.containerText2}>
                         Señor: {'\n'} "{authContext.chofer.nombre} {authContext.chofer.apellido} "{'\n'} usted  no posee viaje por el {'\n'} momento
                     </Text>
-
                 </View>
             )
         }
@@ -82,35 +81,50 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
+        backgroundColor:'#ffffff',
+
     },
     //text
     containerText: {
         marginTop: 20,
         marginLeft: 115,
         fontSize: 27,
-        textShadowColor: '#000000'
+        textShadowColor: '#000000',
     },
     containerText2: {
         paddingTop: 10,
         fontSize: 20,
-        textShadowColor: '#000000'
+        textShadowColor: '#000000',
+        
     },
     //titulo viaje
     containerTextViaje: {
         fontSize: 23,
         marginLeft: 3,
-
-        textShadowColor: '#000000'
+        color:  '#000000',
+        textShadowColor: '#000000',
+    },
+    containerTextViaje2: {
+       color: '#000000',
     },
     //View viaje
     contenedorViaje: {
-        backgroundColor: '#e3aa1a',
+        color:'#0080c0',
         paddingBottom: 10,
         paddingTop: 10,
         paddingLeft: 10,
         paddingRight: 10,
         marginTop: 20,
         marginBottom: 25,
+        borderColor:'#646464',
+        borderWidth: 2,
+        borderRadius:10,
+    },
+    containerViaje: {
+        marginLeft:10,
+        marginRight:10,
+        
+        
     },
     containerViaje: {
         marginLeft:10,
