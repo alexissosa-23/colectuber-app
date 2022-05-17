@@ -15,23 +15,23 @@ import { useAuthContext } from 'src/contexts/auth-context-provider';
                 <Text style={styles.containerTextPerfil}>Correo: {authContext.chofer.correo_electronico}</Text>
             </View>
         </View>
-        </View>
+      </View>
     );
   }
 
   const styles = StyleSheet.create({
     container: {
-      backgroundColor: "#fff",
-      flex: 1
+      backgroundColor: "#ffffff",
+      flex: 1,
     },
     container2: {
-      backgroundColor: "#fff",
+      backgroundColor: "#ffffff",
       //alignItems: "center",
       justifyContent:"center",
       paddingTop:15,
       paddingBottom: 15,
       paddingLeft:5,
-      borderRadius:10
+      borderRadius:10,
     },
     containerTextPerfil: {
         marginLeft: 20,
@@ -46,7 +46,7 @@ import { useAuthContext } from 'src/contexts/auth-context-provider';
         marginTop: 25,
         borderColor:'#646464',
         borderWidth: 3,
-        borderRadius:10
+        borderRadius:10,
         
         
     },

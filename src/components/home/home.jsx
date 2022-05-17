@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor:'#fff',
+        backgroundColor:'#ffffff',
        
         
     },
@@ -90,13 +90,12 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginLeft: 115,
         fontSize: 27,
-        
-        textShadowColor: '#000000'
+        textShadowColor: '#000000',
     },
     containerText2: {
         paddingTop: 10,
         fontSize: 20,
-        textShadowColor: '#000000'
+        textShadowColor: '#000000',
         
     },
     //titulo viaje
@@ -104,10 +103,10 @@ const styles = StyleSheet.create({
         fontSize: 23,
         marginLeft: 3,
         color:  '#000000',
-        textShadowColor: '#000000'
+        textShadowColor: '#000000',
     },
     containerTextViaje2: {
-       color: '#000000'
+       color: '#000000',
     },
     //View viaje
     contenedorViaje: {
@@ -120,7 +119,7 @@ const styles = StyleSheet.create({
         marginBottom: 25,
         borderColor:'#646464',
         borderWidth: 2,
-        borderRadius:10
+        borderRadius:10,
     },
     containerViaje: {
         marginLeft:10,
