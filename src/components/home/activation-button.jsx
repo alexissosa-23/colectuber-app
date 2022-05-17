@@ -77,7 +77,8 @@ const ActivationButton = () => {
         const renderButton = () => {
             if (!active) {
                 return <Button
-                    title='Activate Location'
+                    color='rgb(255, 127, 39)'
+                    title='Activar Ubicacion'
                     onPress={()=>{
                         confirmAction("Colectuber-App", "Desea activar su ubicacion", activate);
                     }}
@@ -85,7 +86,8 @@ const ActivationButton = () => {
                 />
             } else {
                 return <Button
-                    title='Deactivate Location'
+                    color='rgb(255, 127, 39)'
+                    title='Desactivar Ubicacion'
                     onPress={()=>{
                         confirmAction( "Colectuber-App", "Desea desactivar su ubicacion", deactivate);
                     }}
