@@ -21,11 +21,11 @@ export default function  Menu (){
             }
         ])
     }
+    //action cerrar secion que se requiere en corfirmAcion
     const cerrarSesion = () =>{
-        console.log("Cerrar Sesion")
         authContext.logout()
     }
-
+   // vista de la pantalla Menu
     return <View style={styles.container} >
             <Button
             color='#ff7f27'
@@ -36,6 +36,7 @@ export default function  Menu (){
         </View>
 }
 const styles = StyleSheet.create({
+    //container para centrar el boton de cerrar sesion
     container: {
         flex: 1,
         flexDirection: 'column',

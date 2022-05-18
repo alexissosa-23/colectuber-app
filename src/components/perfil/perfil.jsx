@@ -3,8 +3,10 @@ import { View, Text, StyleSheet } from 'react-native';
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 
   export default function Perfil() {
+    // para ver los datos delchofer que se autentico
     const authContext = useAuthContext();
 
+    //vista de la pantalla Perfil
     return (
       <View style={styles.container}>
         <View style={styles.containerBorde}>
@@ -21,6 +23,7 @@ import { useAuthContext } from 'src/contexts/auth-context-provider';
   }
 
   const styles = StyleSheet.create({
+    //
     container: {
       backgroundColor: "#ffffff",
       flex: 1,

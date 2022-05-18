@@ -9,8 +9,6 @@ import Perfil from 'src/components/perfil/perfil';
 import Menu from 'src/components/menu/menu';
 
 
-
-
 export default function App() {
 
   return (
@@ -23,24 +21,31 @@ export default function App() {
 
 const Stack = createDrawerNavigator();
 function AppNavigator() {
+  // para la autenticacion
   const authContext = useAuthContext();
 
+  // mostrar pantalla carrgando
   if (authContext.loading) return <Cargando />
 
-  if(authContext.isLoggedIn){
+  /**
+   * si el chofer ya se autentico se carga las pantallas para la
+  navegacion Home, Perfil, Menu
+   *  */
+  if (authContext.isLoggedIn) {
+    //vista de nevegacion con los Screens Home, Pefil, Menu
     return (
       <NavigationContainer>
         <Stack.Navigator>
-         <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name='Perfil' component={Perfil} />
           <Stack.Screen name="Menu" component={Menu} />
         </Stack.Navigator>
       </NavigationContainer>
     );
-
-  }else{
+    // si el chofer no esta autenticado  carga la pantalla Login o si cierra sesion
+  } else {
     return (
-      <Login/>
+      <Login />
     );
   }
 

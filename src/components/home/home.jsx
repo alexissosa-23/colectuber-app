@@ -23,7 +23,7 @@ export default function  Home (){
                 setLoading(false)
             })
     }, []);
-
+   // para renderiza la pagina en caso de que el chofer tenga viaje o no
     const renderContet = () => {
         if (viaje) {
             return (
@@ -45,7 +45,7 @@ export default function  Home (){
             return (
                 <View>
                     <View style={styles.contenedorViaje}>
-                        <Text 
+                        <Text
                         style={styles.containerTextViaje}>Viaje:</Text>
                         <Text>Conductor: </Text>
                         <Text>Destino: Sin Viaje</Text>
@@ -68,6 +68,7 @@ export default function  Home (){
             </View>
     )}
     else {
+        //mostrat pantalla cargando despues de autenticarse
         return (
         <View style={styles.container}>
             <Text style={styles.containerText}>
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         fontSize: 20,
         textShadowColor: '#000000',
-        
+
     },
     //titulo viaje
     containerTextViaje: {
@@ -123,8 +124,8 @@ const styles = StyleSheet.create({
     containerViaje: {
         marginLeft:10,
         marginRight:10,
-        
-        
+
+
     },
     containerViaje: {
         marginLeft:10,
