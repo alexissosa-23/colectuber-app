@@ -50,7 +50,6 @@ export default function Home() {
                
                 </View>
 
-
             )
         } else {
             return (
@@ -66,9 +65,6 @@ export default function Home() {
                         Señor: {'\n'} "{authContext.chofer.nombre} {authContext.chofer.apellido} "{'\n'} usted  no posee viaje por el {'\n'} momento
                     </Text>
                 </View>
-
-
-
 
             )
         }
