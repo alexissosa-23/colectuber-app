@@ -163,37 +163,7 @@ const styles = StyleSheet.create({
     boton: {
         marginBottom: 25,
         marginTop: 6,
-
-    },
-
-    boton2: {
         alignItems: 'center',
-        justifyContent: 'space-around',
-        textAlign: 'center',
-        backgroundColor: 'rgb(255, 127, 39)',
-        width: 200,
-        //flex: 0.6,
-        height: 45,
-        fontSize: 18,
-        color: 'rgb(255, 255, 255)',
-        borderRadius: 20,
-
-
-    },
-    boton3: {
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        textAlign: 'center',
-        backgroundColor: 'rgb(255, 127, 39)',
-        width: 200,
-        //flex: 0.6,
-        height: 45,
-        fontSize: 18,
-        color: 'rgb(255, 255, 255)',
-        borderRadius: 20,
-        paddingTop: 10,
-
-
     },
 
 });
