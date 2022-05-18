@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, Alert } from 'react-native';
+import { View, Text, Button, Alert, TouchableOpacity } from 'react-native';
 import LocationService from 'src/services/location-service';
 
 
@@ -27,7 +27,7 @@ const ActivationButton = () => {
         }
 
         init()
-            .catch(err=>console.error(err));
+            .catch(err => console.error(err));
     }, []);
 
 
@@ -37,7 +37,7 @@ const ActivationButton = () => {
         console.error(error);
     }
 
-   //activar la ubicacion al hacer clic
+    //activar la ubicacion al hacer clic
     const activate = () => {
         setReady(false);
         setError("");
@@ -48,7 +48,7 @@ const ActivationButton = () => {
     }
 
 
-     //desactivar la ubicacion al hacer clic
+    //desactivar la ubicacion al hacer clic
     const deactivate = () => {
         setReady(false);
         setError("");
@@ -59,12 +59,12 @@ const ActivationButton = () => {
     }
 
     //Mensaje de confirmacion al apretar el boton de Activar o desactivar
-    const confirmAction = (title,  message, action)=>{
+    const confirmAction = (title, message, action) => {
         Alert.alert(title, message, [
             {
-                text:'No',
-                onPress:()=>{},
-                style:'No'
+                text: 'No',
+                onPress: () => { },
+                style: 'No'
             },
             {
                 text: 'Si',
@@ -76,23 +76,58 @@ const ActivationButton = () => {
     const render = () => {
         const renderButton = () => {
             if (!active) {
-                return <Button
+
+
+                return <TouchableOpacity
+                    alignItems= 'center'
                     color='#FF7F27'
                     title='Activar Ubicacion'
-                    onPress={()=>{
+                    onPress={() => {
                         confirmAction("Colectuber-App", "Desea activar su ubicacion", activate);
                     }}
                     disabled={!(hasPermissions && ready)}
-                />
+                >
+                    <Text
+                     style={{
+                        textAlign: 'center',
+                        backgroundColor: 'rgb(255, 127, 39)',
+                        width: 200,
+                        height: 45,
+                        fontSize: 15,
+                        color: 'rgb(255, 255, 255)',
+                        borderRadius: 20,
+                        paddingTop: 10,
+                
+                    }}
+                    >ACTIVAR UBICACION</Text>
+                </TouchableOpacity>
+
+
             } else {
-                return <Button
+                return <TouchableOpacity
+                    alignItems= 'center'
                     color='#FF7F27'
                     title='Desactivar Ubicacion'
-                    onPress={()=>{
-                        confirmAction( "Colectuber-App", "Desea desactivar su ubicacion", deactivate);
+                    onPress={() => {
+                        confirmAction("Colectuber-App", "Desea desactivar su ubicacion", deactivate);
                     }}
                     disabled={!ready}
-                />
+                >
+                    <Text
+                    style={{
+                    
+                        textAlign: 'center',
+                        backgroundColor: 'rgb(255, 127, 39)',
+                        width: 200,
+                        height: 45,
+                        fontSize: 15,
+                        color: 'rgb(255, 255, 255)',
+                        borderRadius: 20,
+                        paddingTop: 10,
+                
+                    }}
+                    >DESACTIVAR UBICACION</Text>
+                </TouchableOpacity>
             }
         }
 
@@ -100,7 +135,7 @@ const ActivationButton = () => {
             if (error) return <Text>{error}</Text>
         }
 
-        if (loading) return <Button disabled={true} title= "Loading..."/>
+        if (loading) return <Button disabled={true} title="Loading..." />
         return <>
             {renderButton()}
             {renderError()}
@@ -114,4 +149,6 @@ const ActivationButton = () => {
     );
 }
 
+
 export default ActivationButton;
+

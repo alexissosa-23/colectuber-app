@@ -1,12 +1,11 @@
 import React, { Component, useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet, Dimensions, Image, IconButton } from 'react-native';
+import { View, Text, Button, StyleSheet, Dimensions, Image, IconButton, TouchableOpacity } from 'react-native';
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 import ColectuberService from 'src/services/colectuber-service';
 import ActivationButton from './activation-button';
 import Cargando from './cargando';
 
-
-export default function  Home (){
+export default function Home() {
 
     //Estados
     const authContext = useAuthContext();
@@ -27,17 +26,27 @@ export default function  Home (){
     const renderContet = () => {
         if (viaje) {
             return (
-                <View style={styles.containerViaje}>
-                    <View style={styles.contenedorViaje}>
-                        <Text style={styles.containerTextViaje}>Viaje:</Text>
-                        <Text style={styles.containerTextViaje2}>Conductor: {JSON.stringify(authContext.chofer.nombre)} {JSON.stringify(authContext.chofer.apellido)}</Text>
-                        <Text style={styles.containerTextViaje2}>Destino: {viaje.recorrido.nombre}</Text>
-                        <Text style={styles.containerTextViaje2}>Descripcion: {viaje.recorrido.descripcion}</Text>
-                    </View>
 
+                <View style={styles.containerViaje}>
+                    <Text style={styles.containerTextViaje3}>Informacion Viaje</Text>
+                    <Text style={styles.containerTextViaje}>Conductor:</Text>
+
+                    <View style={styles.contenedorViaje}>
+                        <Text style={styles.containerTextViaje2}>{JSON.stringify(authContext.chofer.nombre)} {JSON.stringify(authContext.chofer.apellido)}</Text>
+                    </View>
+                    <Text style={styles.containerTextViaje}>Destino:</Text>
+                    <View style={styles.contenedorViaje}>
+                        <Text style={styles.containerTextViaje2}>{viaje.recorrido.nombre}</Text>
+                    </View>
+                    <Text style={styles.containerTextViaje}>Descripcion:</Text>
+                    <View style={styles.contenedorViaje}>
+                        <Text style={styles.containerTextViaje2}>{viaje.recorrido.descripcion}</Text>
+                    </View>
+                   
                     <View style={styles.boton}>
                         <ActivationButton />
-                    </View>
+                   </View>
+               
                 </View>
 
             )
@@ -45,8 +54,7 @@ export default function  Home (){
             return (
                 <View>
                     <View style={styles.contenedorViaje}>
-                        <Text 
-                        style={styles.containerTextViaje}>Viaje:</Text>
+                        <Text style={styles.containerTextViaje}>Viaje:</Text>
                         <Text>Conductor: </Text>
                         <Text>Destino: Sin Viaje</Text>
                         <Text>Descripcion: Sin Viaje</Text>
@@ -56,33 +64,35 @@ export default function  Home (){
                         Señor: {'\n'} "{authContext.chofer.nombre} {authContext.chofer.apellido} "{'\n'} usted  no posee viaje por el {'\n'} momento
                     </Text>
                 </View>
+
             )
         }
     }
     if (!loading) {
-            return(
+        return (
             <View style={styles.container}>
                 <View >
                     {renderContet()}
                 </View>
             </View>
-    )}
+        )
+    }
     else {
         return (
-        <View style={styles.container}>
-            <Text style={styles.containerText}>
-            </Text>
-            <Cargando />
-        </View>
-    )}
+            <View style={styles.container}>
+                <Text style={styles.containerText}>
+                </Text>
+                <Cargando />
+            </View>
+        )
+    }
 
 }
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor:'#ffffff',
-
+        backgroundColor: '#ffffff',
     },
     //text
     containerText: {
@@ -90,50 +100,64 @@ const styles = StyleSheet.create({
         marginLeft: 115,
         fontSize: 27,
         textShadowColor: '#000000',
+
     },
     containerText2: {
         paddingTop: 10,
         fontSize: 20,
         textShadowColor: '#000000',
-        
+
     },
     //titulo viaje
     containerTextViaje: {
-        fontSize: 23,
-        marginLeft: 3,
-        color:  '#000000',
+        fontSize: 18,
+        marginLeft: 5,
+        color: '#000000',
         textShadowColor: '#000000',
+        fontWeight: 'bold',
+        marginRight: 10,
+        marginBottom: 2,
+
     },
     containerTextViaje2: {
-       color: '#000000',
+        color: '#000000',
+        marginRight: 0,
+        marginBottom: 0,
+        fontSize: 15,
+    },
+    containerTextViaje3: {
+        color: '#000000',
+        marginLeft: 10,
+        marginRight: 10,
+        fontSize: 22,
+        fontWeight: 'bold',
+        textAlign: "center",
+
     },
     //View viaje
     contenedorViaje: {
-        color:'#0080c0',
+        color: '#0080c0',
         paddingBottom: 10,
         paddingTop: 10,
         paddingLeft: 10,
         paddingRight: 10,
-        marginTop: 20,
+        marginTop: 5,
         marginBottom: 25,
-        borderColor:'#646464',
-        borderWidth: 2,
-        borderRadius:10,
+        borderColor: '#646464',
+        borderWidth: 3,
+        borderRadius: 10,
     },
     containerViaje: {
-        marginLeft:10,
-        marginRight:10,
-        
-        
-    },
-    containerViaje: {
-        marginLeft:10,
-        marginRight:10,
+        marginLeft: 15,
+        marginRight: 15,
+        marginTop: 5,
+
     },
     //boton Activacion
     boton: {
         marginBottom: 25,
         marginTop: 6,
+        alignItems: 'center',
     },
 
 });
