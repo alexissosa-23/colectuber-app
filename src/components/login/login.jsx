@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 import { Image, Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
 
-
 const Login = () => {
     const authContext = useAuthContext();
     const [name, setName] = useState("");
@@ -149,8 +148,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: 'rgb(255, 255, 255)',
         borderRadius: 20,
-
-
     },
     boton2: {
         alignItems: 'center',
