@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet, Dimensions, Image, IconButton } from 'react-native';
+import { View, Text, Button, StyleSheet, Dimensions, Image, IconButton, TouchableOpacity } from 'react-native';
 import { useAuthContext } from 'src/contexts/auth-context-provider';
 import ColectuberService from 'src/services/colectuber-service';
 import ActivationButton from './activation-button';
@@ -27,11 +27,11 @@ export default function Home() {
     const renderContet = () => {
         if (viaje) {
             return (
-                
+
                 <View style={styles.containerViaje}>
                     <Text style={styles.containerTextViaje3}>Informacion Viaje</Text>
                     <Text style={styles.containerTextViaje}>Conductor:</Text>
-                   
+
                     <View style={styles.contenedorViaje}>
                         <Text style={styles.containerTextViaje2}>{JSON.stringify(authContext.chofer.nombre)} {JSON.stringify(authContext.chofer.apellido)}</Text>
                     </View>
@@ -41,12 +41,13 @@ export default function Home() {
                     </View>
                     <Text style={styles.containerTextViaje}>Descripcion:</Text>
                     <View style={styles.contenedorViaje}>
-                       <Text style={styles.containerTextViaje2}>{viaje.recorrido.descripcion}</Text>
+                        <Text style={styles.containerTextViaje2}>{viaje.recorrido.descripcion}</Text>
                     </View>
-
+                   
                     <View style={styles.boton}>
                         <ActivationButton />
-                    </View>
+                   </View>
+               
                 </View>
 
 
@@ -115,13 +116,12 @@ const styles = StyleSheet.create({
     //titulo viaje
     containerTextViaje: {
         fontSize: 18,
-        marginLeft: 15,
+        marginLeft: 5,
         color: '#000000',
         textShadowColor: '#000000',
         fontWeight: 'bold',
         marginRight: 10,
         marginBottom: 2,
-
 
     },
     containerTextViaje2: {
@@ -134,10 +134,10 @@ const styles = StyleSheet.create({
         color: '#000000',
         marginLeft: 10,
         marginRight: 10,
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: 'bold',
         textAlign: "center",
-        
+
     },
     //View viaje
     contenedorViaje: {
@@ -149,14 +149,13 @@ const styles = StyleSheet.create({
         marginTop: 5,
         marginBottom: 25,
         borderColor: '#646464',
-        borderWidth: 2,
+        borderWidth: 3,
         borderRadius: 10,
     },
     containerViaje: {
-        marginLeft: 10,
-        marginRight: 10,
-        
-
+        marginLeft: 15,
+        marginRight: 15,
+        marginTop: 5,
 
     },
 
@@ -164,7 +163,37 @@ const styles = StyleSheet.create({
     boton: {
         marginBottom: 25,
         marginTop: 6,
+
     },
- 
-    
+
+    boton2: {
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        textAlign: 'center',
+        backgroundColor: 'rgb(255, 127, 39)',
+        width: 200,
+        //flex: 0.6,
+        height: 45,
+        fontSize: 18,
+        color: 'rgb(255, 255, 255)',
+        borderRadius: 20,
+
+
+    },
+    boton3: {
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        textAlign: 'center',
+        backgroundColor: 'rgb(255, 127, 39)',
+        width: 200,
+        //flex: 0.6,
+        height: 45,
+        fontSize: 18,
+        color: 'rgb(255, 255, 255)',
+        borderRadius: 20,
+        paddingTop: 10,
+
+
+    },
+
 });

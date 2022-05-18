@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, Alert } from 'react-native';
+import { View, Text, Button, Alert, TouchableOpacity } from 'react-native';
 import LocationService from 'src/services/location-service';
 
 
@@ -76,23 +76,31 @@ const ActivationButton = () => {
     const render = () => {
         const renderButton = () => {
             if (!active) {
-                return <Button
+
+                
+                return <TouchableOpacity
                     color='#FF7F27'
                     title='Activar Ubicacion'
                     onPress={()=>{
                         confirmAction("Colectuber-App", "Desea activar su ubicacion", activate);
                     }}
                     disabled={!(hasPermissions && ready)}
-                />
+                >
+                      <Text>ACTIVAR UBICACION</Text>
+                </TouchableOpacity>
+              
+                
             } else {
-                return <Button
+                return <TouchableOpacity
                     color='#FF7F27'
                     title='Desactivar Ubicacion'
                     onPress={()=>{
                         confirmAction( "Colectuber-App", "Desea desactivar su ubicacion", deactivate);
                     }}
                     disabled={!ready}
-                />
+                >
+                     <Text>DESACTIVAR UBICACION</Text>
+                </TouchableOpacity>
             }
         }
 
@@ -114,4 +122,6 @@ const ActivationButton = () => {
     );
 }
 
+
 export default ActivationButton;
+
