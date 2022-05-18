@@ -3,11 +3,13 @@ import { useAuthContext } from 'src/contexts/auth-context-provider';
 import { Image, Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 const Login = () => {
+    //Estados
     const authContext = useAuthContext();
     const [name, setName] = useState("");
     const [pass, setPass] = useState("");
     const [ready, setReady] = useState(true);
-
+    
+    //Verificacion usuario y contraseña
     const login = () => {
         if (!name || !pass) {
             return
@@ -15,13 +17,13 @@ const Login = () => {
         setReady(false)
         authContext.login(name, pass)
             .catch(err => {
+                 //Contrasena o username equivocado o error al autenticar
                 console.error(err);
-                //Contrasena o username equivocado o error al autenticar
                 setReady(true);
             })
     }
     return (
-
+         //Borde Superior
         <View style={styles.container}>
             <Text style={styles.bordeSuperior}> BordeSuperior</Text>
             <TouchableOpacity
@@ -31,6 +33,7 @@ const Login = () => {
                 <Image
                     style={styles.image}
                     resizeMode='contain'
+                    //Titulo Colectuber
                     source={require("src/components/login/icons//titulo.png")}
                 />
 
@@ -43,10 +46,11 @@ const Login = () => {
                 <Image
                     style={styles.image}
                     resizeMode='contain'
+                    //Logo Colectuber
                     source={require("src/components/login/icons//logo.png")}
                 />
             </TouchableOpacity>
-
+             
             <TextInput style={styles.input}
                 value={name}
                 placeholder={'Usuario o Correo Electronico '}
