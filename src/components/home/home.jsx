@@ -5,7 +5,6 @@ import ColectuberService from 'src/services/colectuber-service';
 import ActivationButton from './activation-button';
 import Cargando from './cargando';
 
-
 export default function Home() {
 
     //Estados
@@ -154,7 +153,6 @@ const styles = StyleSheet.create({
         marginTop: 5,
 
     },
-
     //boton Activacion
     boton: {
         marginBottom: 25,
