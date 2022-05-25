@@ -18,7 +18,7 @@ export const AuthProvider = ({children})=>{
         AuthService.checkLogin(fetchChofer)
             .then((chofer)=>{
                 setChofer(chofer);
-                setLoggedIn(true);
+                setLoggedIn(false);
             })
             .catch(()=>{
                 setLoggedIn(false);
