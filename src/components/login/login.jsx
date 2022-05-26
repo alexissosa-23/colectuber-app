@@ -9,7 +9,7 @@ const Login = () => {
     const [pass, setPass] = useState("");
     const [ready, setReady] = useState(true);
     
-    //Verificacion usuario y contraseña
+    //Verificacion usuario y contraseña...
     const login = () => {
         if (!name || !pass) {
             return
@@ -17,13 +17,13 @@ const Login = () => {
         setReady(false)
         authContext.login(name, pass)
             .catch(err => {
-                 //Contraseña o username equivocado o error al autenticar
+                 //Contraseña o username equivocado o error al autenticar...
                 console.error(err);
                 setReady(true);
             })
     }
     return (
-         //Borde Superior
+         //Borde Superior..
         <View style={styles.container}>
             <Text style={styles.bordeSuperior}> BordeSuperior</Text>
             <TouchableOpacity
@@ -33,7 +33,7 @@ const Login = () => {
                 <Image
                     style={styles.image}
                     resizeMode='contain'
-                  //Titulo Colectuber
+                  //Titulo Colectuber...
                     source={require("src/components/login/icons//titulo.png")}
                 />
 
@@ -46,24 +46,24 @@ const Login = () => {
                 <Image
                     style={styles.image}
                     resizeMode='contain'
-                    //Logo Colectuber
+                    //Logo Colectuber...
                     source={require("src/components/login/icons//logo.png")}
                 />
             </TouchableOpacity>
              
             <TextInput style={styles.input}
-                //Input para el Correo
+                //Input para el Correo...
                 value={name}
                 placeholder={'Usuario o Correo Electronico '}
                 onChangeText={newName => setName(newName)}
             />
 
             <Text
-            //Separador para los inputs
+            //Separador para los inputs...
             style={styles.bordeInput}></Text>
 
             <TextInput style={styles.input}
-            //Input para la contraseña
+            //Input para la contraseña...
                 value={pass}
                 placeholder={'Contraseña'}
                 secureTextEntry={true}
@@ -71,24 +71,24 @@ const Login = () => {
             />
              
             <Text 
-            //Separador para los inputs
+            //Separador para los inputs...
             style={styles.bordeInput}></Text>
 
 
             <TouchableOpacity
-               //Contenedor para el boton de inciar sesion
+               //Contenedor para el boton de inciar sesion...
                 style={styles.boton}
                 disabled={!ready}
                 onPress={login}
             >
                 <Text 
-                //Boton de iniciar sesion
+                //Boton de iniciar sesion...
                 style={styles.boton2}>INICIAR SESION</Text>
 
             </TouchableOpacity>
 
             <Text 
-            //Borde inferior para que se ajuste mejor la pantalla usando flex
+            //Borde inferior para que se ajuste mejor la pantalla usando flex...
             style={styles.bordeInferior}></Text>
 
         </View>
@@ -97,7 +97,7 @@ const Login = () => {
 }
 
 const styles = StyleSheet.create({
-    // Estilo del contenedor global del Login
+    // Estilo del contenedor global del Login...
     container: {
         flexDirection: "column",
         flex: 1,
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         alignContent: 'space-between',
 
     },
-    //Estilo del borde superior
+    //Estilo del borde superior...
     bordeSuperior: {
         justifyContent: 'space-around',
         flexDirection: "column",
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         width: 400,
 
     },
-    //Estilo del titulo Colectuber
+    //Estilo del titulo Colectuber...
     titulo: {
         flex: 1,
         overflow: 'hidden',
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
         width: 300,
     },
 
-    //Estilos del logo de Colectuber
+    //Estilos del logo de Colectuber...
     logo: {
         flex: 3,
         overflow: 'hidden',
@@ -135,12 +135,12 @@ const styles = StyleSheet.create({
         position: 'relative',
     },
 
-    //Estilo para las imagenes
+    //Estilo para las imagenes...
     image: {
         flex: 1
     },
 
-    //Estilo para los inputs user y correo
+    //Estilo para los inputs user y correo...
     input: {
         flexDirection: "column",
         flex: 1,
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
 
     },
-    //Estilo para el contenedor del boton de iniciar sesion
+    //Estilo para el contenedor del boton de iniciar sesion...
     boton: {
         alignItems: 'center',
         justifyContent: 'space-around',
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
 
-     //Estilo para el boton de iniciar sesion
+     //Estilo para el boton de iniciar sesion...
     boton2: {
         alignItems: 'center',
         justifyContent: 'space-around',
@@ -181,14 +181,14 @@ const styles = StyleSheet.create({
 
 
     },
-    //Estilo del borde inferior
+    //Estilo del borde inferior...
     bordeInferior: {
         flexDirection: "column",
         backgroundColor: '#ffffff',
         flex: 2,
 
     },
-    //Estilo para los bordes que estan en medio de los inputs
+    //Estilo para los bordes que estan en medio de los inputs...
     bordeInput: {
         flexDirection: "column",
         backgroundColor: '#ffffff',
