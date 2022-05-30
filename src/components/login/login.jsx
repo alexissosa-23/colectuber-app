@@ -1,26 +1,48 @@
 import React, { useState } from 'react';
 import { useAuthContext } from 'src/contexts/auth-context-provider';
-import { Image, Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image, Text, TextInput, View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 
 const Login = () => {
+
     //Estados
     const authContext = useAuthContext();
     const [name, setName] = useState("");
     const [pass, setPass] = useState("");
     const [ready, setReady] = useState(true);
-    
+    const [error, setError] = useState(true);
+
+    //Mensaje de errores al autenticarse
+    function mensajeError(title,  message, action){
+        Alert.alert(title, message, [
+            {
+                text: 'Ok',
+                onPress: action,
+            }
+        ])
+    }
+    //Action en caso de error al auntenticarse
+    const actionError = () =>{
+        return
+    }
     //Verificacion usuario y contraseña...
     const login = () => {
-        if (!name || !pass) {
-            return
+        if (!name && !pass) {
+            mensajeError("Error","Los campos Usuario y contraseña estan vacíos",actionError)
+        }else if (!name) {
+            mensajeError("Error","El campo Usuario estan vacío",actionError)
         }
-        setReady(false)
+        else if (!pass) {
+            mensajeError("Error","El campo Contraseña estan vacío",actionError)
+        }else{
+            setReady(false)
         authContext.login(name, pass)
             .catch(err => {
                  //Contraseña o username equivocado o error al autenticar...
-                console.error(err);
+                 mensajeError("Error","Contraseña o Usuario incorrecto",actionError);
                 setReady(true);
             })
+        }
+
     }
     return (
          //Borde Superior..
@@ -50,7 +72,7 @@ const Login = () => {
                     source={require("src/components/login/icons//logo.png")}
                 />
             </TouchableOpacity>
-             
+
             <TextInput style={styles.input}
                 //Input para el Correo...
                 value={name}
@@ -69,8 +91,8 @@ const Login = () => {
                 secureTextEntry={true}
                 onChangeText={newPass => setPass(newPass)}
             />
-             
-            <Text 
+
+            <Text
             //Separador para los inputs...
             style={styles.bordeInput}></Text>
 
@@ -81,13 +103,13 @@ const Login = () => {
                 disabled={!ready}
                 onPress={login}
             >
-                <Text 
+                <Text
                 //Boton de iniciar sesion...
                 style={styles.boton2}>INICIAR SESION</Text>
 
             </TouchableOpacity>
 
-            <Text 
+            <Text
             //Borde inferior para que se ajuste mejor la pantalla usando flex...
             style={styles.bordeInferior}></Text>
 
