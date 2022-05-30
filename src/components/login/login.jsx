@@ -9,6 +9,7 @@ const Login = () => {
     const [name, setName] = useState("");
     const [pass, setPass] = useState("");
     const [ready, setReady] = useState(true);
+    const [error, setError] = useState(true);
 
     //Mensaje de errores al autenticarse
     function mensajeError(title,  message, action){
@@ -32,14 +33,16 @@ const Login = () => {
         }
         else if (!pass) {
             mensajeError("Error","El Campo contraseña estan vacía",actionError)
-        }
-        setReady(false)
+        }else{
+            setReady(false)
         authContext.login(name, pass)
             .catch(err => {
                  //Contraseña o username equivocado o error al autenticar...
                  mensajeError("Error","Contraseña o usuario incorrecto",actionError);
                 setReady(true);
             })
+        }
+
     }
     return (
          //Borde Superior..
