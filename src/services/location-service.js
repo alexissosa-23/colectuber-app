@@ -19,7 +19,7 @@ TaskManager.defineTask(TASK_NAME, async ({ data, error }) => {
                     longitud: location.coords.longitude
                 },
             }
-            console.log(datos);
+            console.log("Ubicacion",datos);
             ColectuberService.postUbicacion(datos);
         }
     }
@@ -31,6 +31,7 @@ const requestPermissions = async () => {
     if (!foregroundPermission.granted) return false;
     const backgroundPermission = await Location.requestBackgroundPermissionsAsync();
     if (!backgroundPermission.granted) return false;
+    console.log("location-Service",true)
     return true;
 }
 

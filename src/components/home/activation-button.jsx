@@ -17,10 +17,12 @@ const ActivationButton = () => {
             //Pedir permisos
             let permissions = await LocationService.requestPermissions();
             setPermissions(permissions);
+            console.log("Pedir permiso",permissions)
 
             //Controlar si el servicio esta corriendo
             let hasStarted = await LocationService.isTrackingLocation();
             setActive(hasStarted);
+            console.log("Servicio esta corriendo",hasStarted)
 
             setReady(true);
             setLoading(false);
@@ -97,7 +99,7 @@ const ActivationButton = () => {
                         color: 'rgb(255, 255, 255)',
                         borderRadius: 20,
                         paddingTop: 10,
-                
+
                     }}
                     >ACTIVAR UBICACION</Text>
                 </TouchableOpacity>
@@ -115,7 +117,7 @@ const ActivationButton = () => {
                 >
                     <Text
                     style={{
-                    
+
                         textAlign: 'center',
                         backgroundColor: 'rgb(255, 127, 39)',
                         width: 200,
@@ -124,7 +126,7 @@ const ActivationButton = () => {
                         color: 'rgb(255, 255, 255)',
                         borderRadius: 20,
                         paddingTop: 10,
-                
+
                     }}
                     >DESACTIVAR UBICACION</Text>
                 </TouchableOpacity>
