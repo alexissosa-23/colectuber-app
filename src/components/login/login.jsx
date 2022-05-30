@@ -27,18 +27,18 @@ const Login = () => {
     //Verificacion usuario y contraseña...
     const login = () => {
         if (!name && !pass) {
-            mensajeError("Error","Los campos Usuario y contraseña estan vacías",actionError)
+            mensajeError("Error","Los campos Usuario y contraseña estan vacíos",actionError)
         }else if (!name) {
-            mensajeError("Error","El campo Usuario estan vacía",actionError)
+            mensajeError("Error","El campo Usuario estan vacío",actionError)
         }
         else if (!pass) {
-            mensajeError("Error","El Campo contraseña estan vacía",actionError)
+            mensajeError("Error","El campo Contraseña estan vacío",actionError)
         }else{
             setReady(false)
         authContext.login(name, pass)
             .catch(err => {
                  //Contraseña o username equivocado o error al autenticar...
-                 mensajeError("Error","Contraseña o usuario incorrecto",actionError);
+                 mensajeError("Error","Contraseña o Usuario incorrecto",actionError);
                 setReady(true);
             })
         }
