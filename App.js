@@ -9,6 +9,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Perfil from 'src/components/perfil/perfil';
 import Menu from 'src/components/menu/menu';
 import { color } from 'react-native-reanimated';
+import { Ionicons } from "@expo/vector-icons";
 
 
 
@@ -33,10 +34,42 @@ function AppNavigator() {
     return (
 
       <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator>
-         <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name='Perfil' component={Perfil} />
-          <Stack.Screen name="Sesion" component={Menu} />
+        <Stack.Navigator
+         initialRouteName='Imbox'
+          tabBarOptions={{
+            activeTintColor: '#FFF',
+            activeBackgroundColor: '#feb72b',
+            inactiveTintColor: '#FFF',
+            inactiveBackgroundColor: '#527318'
+          }}
+        >
+          <Stack.Screen
+            name="Home"
+            component={Home} options={{
+              title: "Inicio",
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="ios-home" size={size} color={color} />
+              )
+            }} />
+
+
+          <Stack.Screen
+            name='Perfil'
+            component={Perfil}
+            options={{
+              title: "Perfil",
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="ios-bus" size={size} color={color} />
+              )
+            }} />
+          <Stack.Screen name="Opciones" component={Menu}
+            options={{
+              title: "Opciones",
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="ios-options" size={size} color={color} />
+              )
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );
@@ -53,10 +86,10 @@ const MyTheme = {
   dark: false,
   colors: {
     primary: 'rgb(255, 255, 255)',
-    card: 'rgb(254, 190, 147)',
+    card: 'rgb(254, 97, 37)',
     //text: 'rgb(0, 0, 0)',
     text: 'rgb(255, 255, 255)',
-    
+
 
   },
 

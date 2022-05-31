@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     bordeSuperior: {
         justifyContent: 'space-around',
         flexDirection: "column",
-        backgroundColor: '#000000',
+        backgroundColor: 'rgb(254, 97, 37)',
         flex: 1,
         width: 400,
 
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         textAlign: 'center',
-        backgroundColor: 'rgb(255, 127, 39)',
+        backgroundColor: 'rgb(254, 97, 37)',
         width: 200,
         height: 45,
         fontSize: 18,
