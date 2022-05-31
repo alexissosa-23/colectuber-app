@@ -5,6 +5,7 @@ import Login from 'src/components/login/login';
 import { AuthProvider, useAuthContext } from 'src/contexts/auth-context-provider'
 import Cargando from 'src/components/home/cargando';
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Perfil from 'src/components/perfil/perfil';
 import Menu from 'src/components/menu/menu';
 import { color } from 'react-native-reanimated';
@@ -22,7 +23,7 @@ export default function App() {
 }
 
 
-const Stack = createDrawerNavigator();
+const Stack = createBottomTabNavigator();
 function AppNavigator() {
   const authContext = useAuthContext();
 
@@ -52,9 +53,10 @@ const MyTheme = {
   dark: false,
   colors: {
     primary: 'rgb(255, 255, 255)',
-    card: 'rgb(254, 154, 78)',
+    card: 'rgb(254, 190, 147)',
     //text: 'rgb(0, 0, 0)',
     text: 'rgb(255, 255, 255)',
+    
 
   },
 
