@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         flexDirection: "column",
        // backgroundColor: 'rgb(44, 183, 157)',
-        backgroundColor: 'rgb(63, 82, 146)',
+        backgroundColor: '#3F5292',
         flex: 1,
         width: 400,
 
@@ -194,8 +194,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         textAlign: 'center',
-        //backgroundColor: 'rgb(44, 183, 157)',
-        backgroundColor: 'rgb(63, 82, 146)',
+        //backgroundColor: 'rgb(44, 183, 157)', //'#3F5292',//2BB69C
+        backgroundColor: '#3F5292',
         width: 200,
         height: 45,
         fontSize: 18,

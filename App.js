@@ -38,9 +38,9 @@ function AppNavigator() {
          initialRouteName='Imbox'
           tabBarOptions={{
             activeTintColor: '#FFF',
-            activeBackgroundColor: '#feb72b',
+            activeBackgroundColor: '#3F5292',//2BB69C
             inactiveTintColor: '#FFF',
-            inactiveBackgroundColor: '#527318'//'rgb(0, 97, 37)'
+            inactiveBackgroundColor: '#2BB69C'//3F5292
           }}
         >
           <Stack.Screen
@@ -87,7 +87,7 @@ const MyTheme = {
   colors: {
     primary: 'rgb(255, 255, 255)',
     //card: 'rgb(254, 97, 37)',
-    card: '#527318',
+    card: 'rgb(63, 82, 146)',
     //text: 'rgb(0, 0, 0)',
     text: 'rgb(255, 255, 255)',
 

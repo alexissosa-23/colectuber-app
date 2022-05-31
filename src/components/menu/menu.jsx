@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         textAlign: 'center',
-        backgroundColor: '#feb72b',
+        backgroundColor: '#3F5292',//2BB69C
         width: 200,
         height: 45,
         fontSize: 18,
