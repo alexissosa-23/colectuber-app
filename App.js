@@ -40,7 +40,7 @@ function AppNavigator() {
             activeTintColor: '#FFF',
             activeBackgroundColor: '#feb72b',
             inactiveTintColor: '#FFF',
-            inactiveBackgroundColor: '#527318'
+            inactiveBackgroundColor: '#527318'//'rgb(0, 97, 37)'
           }}
         >
           <Stack.Screen
@@ -86,7 +86,8 @@ const MyTheme = {
   dark: false,
   colors: {
     primary: 'rgb(255, 255, 255)',
-    card: 'rgb(254, 97, 37)',
+    //card: 'rgb(254, 97, 37)',
+    card: '#527318',
     //text: 'rgb(0, 0, 0)',
     text: 'rgb(255, 255, 255)',
 
