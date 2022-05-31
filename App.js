@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme, StyleSheet } from "@react-navigation/native";
 import Home from 'src/components/home/home';
 import Login from 'src/components/login/login';
 import { AuthProvider, useAuthContext } from 'src/contexts/auth-context-provider'
@@ -29,11 +29,11 @@ function AppNavigator() {
 
   if(authContext.isLoggedIn){
     return (
-      <NavigationContainer>
+      <NavigationContainer theme={MyTheme}>
         <Stack.Navigator>
          <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name='Perfil' component={Perfil} />
-          <Stack.Screen name="Menu" component={Menu} />
+          <Stack.Screen name="Sesion" component={Menu} />
         </Stack.Navigator>
       </NavigationContainer>
     );
@@ -45,3 +45,29 @@ function AppNavigator() {
   }
 
 }
+const MyTheme = {
+  //...DefaultTheme,
+  dark: false,
+  colors: {
+    primary: 'rgb(255, 255, 255)',
+    background: 'rgb(242, 242, 242)',
+    card: 'rgb(255, 127, 39)',
+    //text: 'rgb(0, 0, 0)',
+    text: 'rgb(255, 255, 255)',
+    
+  },
+};
+
+const MyTheme2 = {
+  //...DefaultTheme,
+  colors: {
+    primary: 'rgb(255, 127, 39)',
+    background: 'rgb(242, 242, 242)',
+    card: 'rgb(0, 255, 255)',
+    text: 'rgb(0, 0, 0)',
+    
+  },
+};
+
+
+
