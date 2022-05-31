@@ -7,6 +7,7 @@ import Cargando from 'src/components/home/cargando';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Perfil from 'src/components/perfil/perfil';
 import Menu from 'src/components/menu/menu';
+import { color } from 'react-native-reanimated';
 
 
 
@@ -27,8 +28,9 @@ function AppNavigator() {
 
   if (authContext.loading) return <Cargando />
 
-  if(authContext.isLoggedIn){
+  if (authContext.isLoggedIn) {
     return (
+
       <NavigationContainer theme={MyTheme}>
         <Stack.Navigator>
          <Stack.Screen name="Home" component={Home} />
@@ -38,24 +40,24 @@ function AppNavigator() {
       </NavigationContainer>
     );
 
-  }else{
+  } else {
     return (
-      <Login/>
+      <Login />
     );
   }
 
 }
 const MyTheme = {
-  //...DefaultTheme,
+  // ...DefaultTheme,
   dark: false,
   colors: {
     primary: 'rgb(255, 255, 255)',
-    background: 'rgb(242, 242, 242)',
-    card: 'rgb(255, 127, 39)',
+    card: 'rgb(254, 154, 78)',
     //text: 'rgb(0, 0, 0)',
     text: 'rgb(255, 255, 255)',
-    
+
   },
+
 };
 
 const MyTheme2 = {
@@ -65,7 +67,7 @@ const MyTheme2 = {
     background: 'rgb(242, 242, 242)',
     card: 'rgb(0, 255, 255)',
     text: 'rgb(0, 0, 0)',
-    
+
   },
 };
 
