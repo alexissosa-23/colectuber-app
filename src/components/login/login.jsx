@@ -56,7 +56,7 @@ const Login = () => {
                     style={styles.image}
                     resizeMode='contain'
                   //Titulo Colectuber...
-                    source={require("src/components/login/icons//titulo.png")}
+                    source={require("src/components/login/icons//titulo2.png")}
                 />
 
             </TouchableOpacity>
@@ -68,7 +68,7 @@ const Login = () => {
                     style={styles.image}
                     resizeMode='contain'
                     //Logo Colectuber...
-                    source={require("src/components/login/icons//logo.png")}
+                    source={require("src/components/login/icons//logo4.png")}
                 />
             </TouchableOpacity>
          
