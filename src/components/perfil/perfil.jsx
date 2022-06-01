@@ -73,9 +73,5 @@ const styles = StyleSheet.create({
     borderColor: '#646464',
     borderWidth: 3,
     borderRadius: 10,
-
-  
- 
-
   },
 });

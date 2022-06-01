@@ -56,11 +56,10 @@ const Login = () => {
                     style={styles.image}
                     resizeMode='contain'
                   //Titulo Colectuber...
-                    source={require("src/components/login/icons//titulo.png")}
+                    source={require("src/components/login/icons//titulo2.png")}
                 />
 
             </TouchableOpacity>
-
             <TouchableOpacity
                 activeOpacity={0.75}
                 style={styles.logo}
@@ -69,9 +68,10 @@ const Login = () => {
                     style={styles.image}
                     resizeMode='contain'
                     //Logo Colectuber...
-                    source={require("src/components/login/icons//logo.png")}
+                    source={require("src/components/login/icons//logo4.png")}
                 />
             </TouchableOpacity>
+         
 
             <TextInput style={styles.input}
                 //Input para el Correo...
@@ -133,7 +133,8 @@ const styles = StyleSheet.create({
     bordeSuperior: {
         justifyContent: 'space-around',
         flexDirection: "column",
-        backgroundColor: '#000000',
+       // backgroundColor: 'rgb(44, 183, 157)',
+        backgroundColor: '#3F5292',
         flex: 1,
         width: 400,
 
@@ -193,7 +194,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         textAlign: 'center',
-        backgroundColor: 'rgb(255, 127, 39)',
+        //backgroundColor: 'rgb(44, 183, 157)', //'#3F5292',//2BB69C
+        backgroundColor: '#3F5292',
         width: 200,
         height: 45,
         fontSize: 18,
