@@ -32,7 +32,7 @@ function AppNavigator() {
 
   if (authContext.isLoggedIn) {
     return (
-
+      //navegacion
       <NavigationContainer theme={MyTheme}>
         <Stack.Navigator
          initialRouteName='Imbox'
