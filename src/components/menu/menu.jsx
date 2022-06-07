@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Button, Alert, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { AuthProvider, useAuthContext, } from 'src/contexts/auth-context-provider';
 
-
 export default function Menu() {
 
     const authContext = useAuthContext();
@@ -21,6 +20,7 @@ export default function Menu() {
             }
         ])
     }
+    //Cerrar Sesion
     const cerrarSesion = () => {
         console.log("Cerrar Sesion")
         authContext.logout()
@@ -35,13 +35,11 @@ export default function Menu() {
             }}
         >
             <Text
+            //Boton de cierre de sesion
                 style={styles.boton2}>CERRAR SESION</Text>
 
         </TouchableOpacity>
     </View>
-
-
-
 
 }
 const styles = StyleSheet.create({
@@ -53,6 +51,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
+    
+    //Estilo para el boton de iniciar sesion...
     boton: {
         alignItems: 'center',
         justifyContent: 'space-around',

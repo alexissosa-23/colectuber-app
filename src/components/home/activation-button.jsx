@@ -92,7 +92,7 @@ const ActivationButton = () => {
                     <Text
                      style={{
                         textAlign: 'center',
-                        backgroundColor: '#3F5292',//#2CB79D, 
+                        backgroundColor: 'rgb(63, 82, 146)',//#2CB79D, 
                         width: 200,
                         height: 45,
                         fontSize: 15,
