@@ -27,20 +27,20 @@ export default function Menu() {
     }
 
     return <View style={styles.container}>
-        <View style={styles.containerViaje}>
+        <View style={styles.containerDescripcion}>
             <Text style={styles.containerTextTitulo}>MENU</Text>
             <Text style={styles.containerText}>Nombre de la Aplicación:</Text>
 
             <View style={styles.contenedorDescrip}>
-                <Text style={styles.containerTextViaje2}>ColectuberApp</Text>
+                <Text style={styles.containerTextCuerpo}>ColectuberApp</Text>
             </View>
             <Text style={styles.containerText}>Objetivo:</Text>
             <View style={styles.contenedorDescrip}>
-                <Text style={styles.containerTextViaje2}>Permitir al conductor del colectivo brindar su ubicación, para poder lograr verse en la "Pagina Web" en tiempo real la localización del colectivo</Text>
+                <Text style={styles.containerTextCuerpo}>Permitir al conductor del colectivo brindar su ubicación, para poder lograr verse en la "Pagina Web" en tiempo real la localización del colectivo</Text>
             </View>
             <Text style={styles.containerText}>Equipo de desarrollo:</Text>
             <View style={styles.contenedorDescrip}>
-                <Text style={styles.containerTextViaje2}>Alexis Sosa, José Sosa, Adrián Di Menna, Fabio Kita, Daniel Matsuura, Enzo Ramirez</Text>
+                <Text style={styles.containerTextCuerpo}>Alexis Sosa, José Sosa, Adrián Di Menna, Fabio Kita, Daniel Matsuura, Enzo Ramirez</Text>
             </View>
 
         </View>
@@ -92,7 +92,8 @@ const styles = StyleSheet.create({
         marginBottom: 2,
 
     },
-    containerTextViaje2: {
+    //container para el cuerpo del campo (la descripcion)
+    containerTextCuerpo: {
         color: '#000000',
         marginRight: 0,
         marginBottom: 0,
@@ -120,7 +121,8 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderRadius: 10,
     },
-    containerViaje: {
+    //contenedor de todo el texto
+    containerDescripcion: {
         marginLeft: 15,
         marginRight: 15,
         marginTop: 5,
