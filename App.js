@@ -31,7 +31,7 @@ function AppNavigator() {
       //navegacion
       <NavigationContainer theme={MyTheme}>
         <Stack.Navigator
-         initialRouteName='Imbox'
+          initialRouteName='Imbox'
           tabBarOptions={{
             activeTintColor: '#FFF',
             activeBackgroundColor: '#3F5292',//2BB69C
