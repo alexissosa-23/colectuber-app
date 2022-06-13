@@ -11,9 +11,6 @@ import Menu from 'src/components/menu/menu';
 import { color } from 'react-native-reanimated';
 import { Ionicons } from "@expo/vector-icons";
 
-
-
-
 export default function App() {
 
   return (
@@ -22,7 +19,6 @@ export default function App() {
     </AuthProvider>
   );
 }
-
 
 const Stack = createBottomTabNavigator();
 function AppNavigator() {
@@ -82,22 +78,16 @@ function AppNavigator() {
 
 }
 const MyTheme = {
-  // ...DefaultTheme,
   dark: false,
   colors: {
     primary: 'rgb(255, 255, 255)',
-    //card: 'rgb(254, 97, 37)',
     card: 'rgb(63, 82, 146)',
-    //text: 'rgb(0, 0, 0)',
     text: 'rgb(255, 255, 255)',
-
-
   },
 
 };
 
 const MyTheme2 = {
-  //...DefaultTheme,
   colors: {
     primary: 'rgb(255, 127, 39)',
     background: 'rgb(242, 242, 242)',
