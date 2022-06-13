@@ -28,18 +28,18 @@ export default function Menu() {
 
     return <View style={styles.container}>
         <View style={styles.containerViaje}>
-            <Text style={styles.containerTextViaje3}>MENU</Text>
+            <Text style={styles.containerTextTitulo}>MENU</Text>
             <Text style={styles.containerText}>Nombre de la Aplicación:</Text>
 
-            <View style={styles.contenedorViaje}>
+            <View style={styles.contenedorDescrip}>
                 <Text style={styles.containerTextViaje2}>ColectuberApp</Text>
             </View>
             <Text style={styles.containerText}>Objetivo:</Text>
-            <View style={styles.contenedorViaje}>
+            <View style={styles.contenedorDescrip}>
                 <Text style={styles.containerTextViaje2}>Permitir al conductor del colectivo brindar su ubicación, para poder lograr verse en la "Pagina Web" en tiempo real la localización del colectivo</Text>
             </View>
             <Text style={styles.containerText}>Equipo de desarrollo:</Text>
-            <View style={styles.contenedorViaje}>
+            <View style={styles.contenedorDescrip}>
                 <Text style={styles.containerTextViaje2}>Alexis Sosa, José Sosa, Adrián Di Menna, Fabio Kita, Daniel Matsuura, Enzo Ramirez</Text>
             </View>
 
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         fontSize: 15,
     },
-    containerTextViaje3: {
+    containerTextTitulo: {
         color: '#000000',
         marginLeft: 10,
         marginRight: 10,
@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
         textAlign: "center",
 
     },
-    //View viaje
-    contenedorViaje: {
+    //View de la descripcion
+    contenedorDescrip: {
         color: '#0080c0',
         paddingBottom: 10,
         paddingTop: 10,
