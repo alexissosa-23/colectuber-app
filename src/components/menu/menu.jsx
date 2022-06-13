@@ -36,7 +36,7 @@ export default function Menu() {
             </View>
             <Text style={styles.containerText}>Objetivo:</Text>
             <View style={styles.contenedorDescrip}>
-                <Text style={styles.containerTextCuerpo}>Permitir al conductor del colectivo brindar su ubicación, para poder lograr verse en la "Pagina Web" en tiempo real la localización del colectivo</Text>
+                <Text style={styles.containerTextCuerpo}>Permitir al conductor del colectivo brindar su ubicación, para poder lograr verse en la "Pagina Web" en tiempo real la localización del colectivo.</Text>
             </View>
             <Text style={styles.containerText}>Equipo de desarrollo:</Text>
             <View style={styles.contenedorDescrip}>
@@ -63,6 +63,7 @@ export default function Menu() {
 
 }
 const styles = StyleSheet.create({
+    //container principal
     container: {
         flex: 1,
         flexDirection: 'column',
@@ -99,6 +100,7 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         fontSize: 15,
     },
+    //container para el titulo de los campos
     containerTextTitulo: {
         color: '#000000',
         marginLeft: 10,
@@ -155,6 +157,7 @@ const styles = StyleSheet.create({
 
 
     },
+    //contenador para el boton
     boton3: {
         marginBottom: 25,
         marginTop: 6,
