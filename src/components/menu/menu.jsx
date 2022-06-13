@@ -6,7 +6,7 @@ export default function Menu() {
 
     const authContext = useAuthContext();
 
-    //Mensaje de confirmacion al apretar el boton de cerrar secion
+    //Mensaje de confirmacion al apretar el boton de cerrar sesion
     const confirmAction = (title, message, action) => {
         Alert.alert(title, message, [
             {
@@ -70,14 +70,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         textAlign: 'center',
-        backgroundColor: '#3F5292',//2BB69C
+        backgroundColor: '#3F5292',
         width: 200,
         height: 45,
         fontSize: 18,
         color: 'rgb(255, 255, 255)',
         borderRadius: 20,
         paddingTop: 10,
-
-
     },
 })
